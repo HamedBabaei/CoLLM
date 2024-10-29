@@ -3,6 +3,9 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
+## Directories
+- `case-studies`: you need to create your case-study-specific directory here (if it is not there already). Please organize your code to be executable via the same directory as a root.
+- `images`: directory contains any general images/diagrams related to the project. e.g. architecture diagram.
 
 ## Contributors Guidelines
 *Feel free to skip step 2 if it is inconvenient for you to use pre-commit, once you are done and request for merge, I will take care of fixing the pre-commit related issues -- it is not a big deal at the moment*

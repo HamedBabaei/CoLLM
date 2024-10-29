@@ -5,6 +5,7 @@
 
 
 ## Contributors Guidelines
+*Feel free to skip step 2 if it is inconvenient for you to use pre-commit, once you are done and request for merge, I will take care of fixing the pre-commit related issues -- it is not a big deal at the moment*
 
 1. Clone the repository to your local machine:
 ```bash

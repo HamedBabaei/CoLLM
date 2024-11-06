@@ -1,5 +1,5 @@
 !/bin/bash
-model_names=("llama3" "flan_t5_small" "flan_t5_base" "flan_t5_large" "flan_t5_xl" "flan_t5_xxl")
+model_names=("mistral" "flan_t5_small" "flan_t5_base" "flan_t5_large" "flan_t5_xl" "flan_t5_xxl")
 rqs=("rq3" "rq2" "rq2" "rq2" "rq1" "rq2")
 runs=("r1" "r2" "r3")
 datasets=("umls")

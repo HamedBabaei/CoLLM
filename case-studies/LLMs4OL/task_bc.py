@@ -212,7 +212,7 @@ class LLMClassifierModel:
         no_proba = probas_yes_no[:, len(self.ANSWER_SET["correct"]) :].sum(dim=1)
         probas = torch.cat((yes_probas.reshape(-1, 1), no_proba.reshape(-1, 1)), -1)
         probas_per_candidate_tokens = torch.max(probas, dim=1)
-        sequence_probas = [float(proba) for proba in probas_per_candidate_tokens.values]
+        # sequence_probas = [float(proba) for proba in probas_per_candidate_tokens.values]
         sequences = [
             self.index2label[int(indice)]
             for indice in probas_per_candidate_tokens.indices
@@ -324,7 +324,12 @@ if __name__ == "__main__":
     if args.task == "B":
         template = "Identify whether the following statement is true or false: \n\nStatement: [B] is a subtype of [A]. \nThis statement is a: "
     else:
-        template = "Identify whether the following statement is true or false: \n[H] is [R] [T]. Answer:"
+        if args.model_name in ["llama3", "mistral", "vicuna"]:
+            template = "Identify whether the following statement is true or false: [H] is [R] [T]. \nAnswer:"
+        else:
+            template = (
+                "[H] is [R] [T]. Is this statement true or false? \nThe answer is "
+            )
 
     dataset_path_dict = {
         "umls-B": "dataset/LLMs4OL-2023-paper-Task-B-UMLS-test.json",

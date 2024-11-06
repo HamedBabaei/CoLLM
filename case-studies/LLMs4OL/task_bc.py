@@ -101,7 +101,7 @@ class OpenAIModel:
 
 
 class LLMClassifierModel:
-    def __init__(self, model_path, task, prompt_template, max_new_tokens=5):
+    def __init__(self, model_path, task, prompt_template, max_new_tokens=3):
         self.prompt_template = prompt_template
         self.device = "cuda"
         self.task = task

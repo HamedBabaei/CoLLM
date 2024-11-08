@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Case Study 1.1 on Ontology Generation -- `Ontology generation with metacognitive prompting and LLMs`
 
 This case study examines t...through a different study of researchers titled **title**.
@@ -25,3 +26,6 @@ Datasets for this case study are available in the .
 ```bibtex
 
 ```
+=======
+# REPRO
+>>>>>>> Stashed changes

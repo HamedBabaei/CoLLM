@@ -1,0 +1,383 @@
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:aquaticresources="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+     xmlns:partof="http://www.ontologydesignpatterns.org/cp/owl/partof.owl#">
+
+
+
+  <!-- Define Animal as subclass of linnaeantaxonomy:Taxon -->
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Taxon"/>
+  </owl:Class>
+
+  <!-- Define Plant as subclass of linnaeantaxonomy:Taxon -->
+  <owl:Class rdf:about="#Plant">
+    <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Taxon"/>
+  </owl:Class>
+
+  <!-- Define PlantPart as subclass of Plant and part of Plant -->
+  <owl:Class rdf:about="#PlantPart">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="partof:isPartOf"/>
+        <owl:someValuesFrom rdf:resource="#Plant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- Define HerbivoreRole, CarnivoreRole, OmnivoreRole as subclasses of agentrole:Role -->
+  <owl:Class rdf:about="#HerbivoreRole">
+    <rdfs:subClassOf rdf:resource="agentrole:Role"/>
+    <owl:disjointWith rdf:resource="#CarnivoreRole"/>
+    <owl:disjointWith rdf:resource="#OmnivoreRole"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:allValuesFrom rdf:resource="#Plant"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#CarnivoreRole">
+    <rdfs:subClassOf rdf:resource="agentrole:Role"/>
+    <owl:disjointWith rdf:resource="#HerbivoreRole"/>
+    <owl:disjointWith rdf:resource="#OmnivoreRole"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:allValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#OmnivoreRole">
+    <rdfs:subClassOf rdf:resource="agentrole:Role"/>
+    <owl:disjointWith rdf:resource="#HerbivoreRole"/>
+    <owl:disjointWith rdf:resource="#CarnivoreRole"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <!-- Eats some Plant -->
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#eats"/>
+            <owl:someValuesFrom rdf:resource="#Plant"/>
+          </owl:Restriction>
+          <!-- Eats some Animal -->
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#eats"/>
+            <owl:someValuesFrom rdf:resource="#Animal"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <!-- Define playsRole property between Animal and agentrole:Role -->
+  <owl:ObjectProperty rdf:about="#playsRole">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="agentrole:Role"/>
+  </owl:ObjectProperty>
+
+  <!-- Define eats as an object property equivalent to specieseat:feedsUpon -->
+  <owl:ObjectProperty rdf:about="#eats">
+    <owl:equivalentProperty rdf:resource="specieseat:feedsUpon"/>
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Taxon"/>
+  </owl:ObjectProperty>
+
+  <!-- Ensure that Animals play a Role -->
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#playsRole"/>
+        <owl:someValuesFrom rdf:resource="agentrole:Role"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+ <!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:aquaticresources="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+     xmlns:partof="http://www.ontologydesignpatterns.org/cp/owl/partof.owl#">
+
+
+  Existing definitions are assumed to be present and are not repeated -->
+
+  <!-- Define Lion as subclass of Animal and Species, and plays CarnivoreRole -->
+  <owl:Class rdf:about="#Lion">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <rdf:type rdf:resource="linnaeantaxonomy:Species"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#playsRole"/>
+        <owl:hasValue rdf:resource="#CarnivoreRole"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- Define Liquid -->
+  <owl:Class rdf:about="#Liquid">
+    <rdfs:subClassOf rdf:resource="owl:Thing"/>
+  </owl:Class>
+
+  <!-- Define Water as subclass of Liquid -->
+  <owl:Class rdf:about="#Water">
+    <rdfs:subClassOf rdf:resource="#Liquid"/>
+  </owl:Class>
+
+  <!-- Define drinks property between Animal and Liquid -->
+  <owl:ObjectProperty rdf:about="#drinks">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Liquid"/>
+  </owl:ObjectProperty>
+
+  <!-- Define AnimalThatDoesNotDrinkWater -->
+  <owl:Class rdf:about="#AnimalThatDoesNotDrinkWater">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Animal"/>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Restriction>
+                <owl:onProperty rdf:resource="#drinks"/>
+                <owl:someValuesFrom rdf:resource="#Water"/>
+              </owl:Restriction>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <!-- Extend the domain of eats to include Plant -->
+  <owl:ObjectProperty rdf:about="#eats">
+    <owl:equivalentProperty rdf:resource="specieseat:feedsUpon"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Animal"/>
+          <rdf:Description rdf:about="#Plant"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Taxon"/>
+  </owl:ObjectProperty>
+
+  <!-- Define CarnivorousPlant as subclass of Plant that eats some Animal -->
+  <owl:Class rdf:about="#CarnivorousPlant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+<!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#">
+
+
+   Existing definitions are assumed to be present and are not repeated -->
+
+  <!-- Define Country class -->
+  <owl:Class rdf:about="#Country"/>
+
+  <!-- Define isFoundIn property between Taxon and Country -->
+  <owl:ObjectProperty rdf:about="#isFoundIn">
+    <rdfs:domain rdf:resource="linnaeantaxonomy:Taxon"/>
+    <rdfs:range rdf:resource="#Country"/>
+  </owl:ObjectProperty>
+
+  <!-- Define preysUpon property equivalent to specieseat:preyesUpon -->
+  <owl:ObjectProperty rdf:about="#preysUpon">
+    <owl:equivalentProperty rdf:resource="specieseat:preyesUpon"/>
+  </owl:ObjectProperty>
+
+  <!-- Ensure that preysUpon is a subproperty of eats -->
+  <owl:SubObjectPropertyOf>
+    <owl:ObjectProperty rdf:about="#preysUpon"/>
+    <owl:ObjectProperty rdf:about="#eats"/>
+  </owl:SubObjectPropertyOf>
+
+  <!-- Define isPreyedUponBy as inverse of preysUpon -->
+  <owl:ObjectProperty rdf:about="#isPreyedUponBy">
+    <owl:inverseOf rdf:resource="#preysUpon"/>
+  </owl:ObjectProperty>
+
+  <!-- Define Predator class -->
+  <owl:Class rdf:about="#Predator">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#preysUpon"/>
+        <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Taxon"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <!-- Define Prey class -->
+  <owl:Class rdf:about="#Prey">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isPreyedUponBy"/>
+        <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Taxon"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+<!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#">
+
+
+
+   Existing definitions are assumed to be present and are not repeated -->
+
+  <!-- Define Habitat class -->
+  <owl:Class rdf:about="#Habitat"/>
+
+  <!-- Define livesIn property between Animal and Habitat -->
+  <owl:ObjectProperty rdf:about="#livesIn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Habitat"/>
+  </owl:ObjectProperty>
+
+  <!-- Define ConservationStatus and its subclasses -->
+  <owl:Class rdf:about="#ConservationStatus"/>
+
+  <owl:Class rdf:about="#Endangered">
+    <rdfs:subClassOf rdf:resource="#ConservationStatus"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Vulnerable">
+    <rdfs:subClassOf rdf:resource="#ConservationStatus"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#LeastConcern">
+    <rdfs:subClassOf rdf:resource="#ConservationStatus"/>
+  </owl:Class>
+
+  <!-- Declare disjointness between ConservationStatus subclasses -->
+  <owl:DisjointClasses>
+    <owl:Class rdf:about="#Endangered"/>
+    <owl:Class rdf:about="#Vulnerable"/>
+    <owl:Class rdf:about="#LeastConcern"/>
+  </owl:DisjointClasses>
+
+  <!-- Define hasConservationStatus property between Taxon and ConservationStatus -->
+  <owl:ObjectProperty rdf:about="#hasConservationStatus">
+    <rdfs:domain rdf:resource="linnaeantaxonomy:Taxon"/>
+    <rdfs:range rdf:resource="#ConservationStatus"/>
+  </owl:ObjectProperty>
+
+  <!-- Define EndangeredAnimal as subclass of Animal with hasConservationStatus Endangered -->
+  <owl:Class rdf:about="#EndangeredAnimal">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Animal"/>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#hasConservationStatus"/>
+            <owl:hasValue rdf:resource="#Endangered"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <!-- Ensure that Animals have a ConservationStatus -->
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:minCardinality rdf:datatype="xsd:nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+     xmlns:partof="http://www.ontologydesignpatterns.org/cp/owl/partof.owl#">
+
+
+
+ Existing definitions are assumed to be present and are not repeated -->
+
+  <!-- Define CarnivorousAnimalThatEatsPlants as equivalent class -->
+  <owl:Class rdf:about="#CarnivorousAnimalThatEatsPlants">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <!-- Animal -->
+          <owl:Class rdf:about="#Animal"/>
+          <!-- playsRole value CarnivoreRole -->
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#playsRole"/>
+            <owl:hasValue rdf:resource="#CarnivoreRole"/>
+          </owl:Restriction>
+          <!-- eats some Plant or PlantPart -->
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#eats"/>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Plant"/>
+                  <owl:Class rdf:about="#PlantPart"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+
+</rdf:RDF>

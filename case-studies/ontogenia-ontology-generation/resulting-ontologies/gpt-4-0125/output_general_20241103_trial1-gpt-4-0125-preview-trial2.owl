@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xml:base="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl">
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+                <owl:onProperty rdf:resource="#isPreyedUponBy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+                <owl:onProperty rdf:resource="#feedsUpon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Aquatic species</rdfs:label>
+        <rdfs:comment>Aquatic species are conceptual entities that are characterized together with resources and water areas.
+Mappable to fi:Species, fi:SpeciesRef, fi:SpeciesFeature, etc.
+It has related axioms from FIGIS Schema that are included in the classes linked to the fi:Species class, such as fi:SpeciesRef (holding association with fi:AqResRef, which holds association with fi:WaterAreaRef).</rdfs:comment>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#feedsUpon">
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">feeds upon</rdfs:label>
+        <owl:inverseOf rdf:resource="#isFoodOf"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isFoodOf">
+        <owl:inverseOf rdf:resource="#feedsUpon"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is food of</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isPreyedUponBy">
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is preyed upon by</rdfs:label>
+        <owl:inverseOf rdf:resource="#preyesUpon"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#preyesUpon">
+        <owl:inverseOf rdf:resource="#isPreyedUponBy"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">preyes upon</rdfs:label>
+    </owl:ObjectProperty>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+                <owl:onProperty rdf:resource="#isPreyedUponBy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+                <owl:onProperty rdf:resource="#feedsUpon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Aquatic species</rdfs:label>
+        <rdfs:comment>Aquatic species are conceptual entities that are characterized together with resources and water areas.
+Mappable to fi:Species, fi:SpeciesRef, fi:SpeciesFeature, etc.
+It has related axioms from FIGIS Schema that are included in the classes linked to the fi:Species class, such as fi:SpeciesRef (holding association with fi:AqResRef, which holds association with fi:WaterAreaRef).</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Plant">
+        <rdfs:label xml:lang="en">Plant</rdfs:label>
+        <rdfs:comment>Plant or plant parts that are consumed by other species.</rdfs:comment>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#feedsUpon">
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">feeds upon</rdfs:label>
+        <owl:inverseOf rdf:resource="#isFoodOf"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isFoodOf">
+        <owl:inverseOf rdf:resource="#feedsUpon"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is food of</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isPreyedUponBy">
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is preyed upon by</rdfs:label>
+        <owl:inverseOf rdf:resource="#preyesUpon"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#preyesUpon">
+        <owl:inverseOf rdf:resource="#isPreyedUponBy"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">preyes upon</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#consumes">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Plant"/>
+        <rdfs:label xml:lang="en">consumes</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isConsumedBy">
+        <owl:inverseOf rdf:resource="#consumes"/>
+        <rdfs:domain rdf:resource="#Plant"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is consumed by</rdfs:label>
+    </owl:ObjectProperty>
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Country">
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Country"/>
+        <rdfs:label xml:lang="en">is located in</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Additional Axioms and Restrictions -->
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isLocatedIn"/>
+                <owl:someValuesFrom rdf:resource="#Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Country">
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:label xml:lang="en">Habitat</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">Endangered Species</rdfs:label>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Country"/>
+        <rdfs:label xml:lang="en">is located in</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#livesIn">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+        <rdfs:label xml:lang="en">lives in</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Additional Axioms and Restrictions -->
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isLocatedIn"/>
+                <owl:someValuesFrom rdf:resource="#Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#livesIn"/>
+                <owl:someValuesFrom rdf:resource="#Habitat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isLocatedIn"/>
+                <owl:someValuesFrom rdf:resource="#Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Plant">
+        <rdfs:label xml:lang="en">Plant</rdfs:label>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#consumesPlant">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Plant"/>
+        <rdfs:label xml:lang="en">consumes plant</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">shares habitat with</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Additional Axioms and Restrictions -->
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#consumesPlant"/>
+                <owl:someValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#consumesPlant"/>
+                <owl:someValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#sharesHabitatWith"/>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+</rdf:RDF>

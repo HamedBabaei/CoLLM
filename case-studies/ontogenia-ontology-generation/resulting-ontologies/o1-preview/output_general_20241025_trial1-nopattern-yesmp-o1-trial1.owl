@@ -1,0 +1,176 @@
+<rdf:RDF xmlns="http://example.org/ontology#"
+     xml:base="http://example.org/ontology.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <!-- Ontology Information -->
+    <owl:Ontology rdf:about="http://example.org/ontology.owl"/>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="http://example.org/ontology#Animal"/>
+    <owl:Class rdf:about="http://example.org/ontology#Plant"/>
+    <owl:Class rdf:about="http://example.org/ontology#PlantPart"/>
+    <owl:Class rdf:about="http://example.org/ontology#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology#Animal"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/ontology#Animal"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/ontology#eats"/>
+                        <owl:allValuesFrom rdf:resource="http://example.org/ontology#PlantPart"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/ontology#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology#Animal"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/ontology#Animal"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/ontology#eats"/>
+                        <owl:allValuesFrom rdf:resource="http://example.org/ontology#Animal"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/ontology#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology#Animal"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/ontology#Animal"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/ontology#eats"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/ontology#Animal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://example.org/ontology#eats"/>
+                        <owl:someValuesFrom rdf:resource="http://example.org/ontology#PlantPart"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/ontology#CarnivoreThatEatsPlants">
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology#Carnivore"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology#eats"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#eats">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Animal"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/ontology#Animal"/>
+                    <rdf:Description rdf:about="http://example.org/ontology#PlantPart"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#hasPart">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Plant"/>
+        <rdfs:range rdf:resource="http://example.org/ontology#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#partOf">
+        <owl:inverseOf rdf:resource="http://example.org/ontology#hasPart"/>
+    </owl:ObjectProperty>
+
+    <!-- Inverse Properties -->
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#isEatenBy">
+        <owl:inverseOf rdf:resource="http://example.org/ontology#eats"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#isPredatorOf">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Animal"/>
+        <rdfs:range rdf:resource="http://example.org/ontology#Animal"/>
+        <owl:equivalentProperty rdf:resource="http://example.org/ontology#eats"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/ontology#inhabits">
+        <rdfs:domain rdf:resource="http://example.org/ontology#Animal"/>
+        <rdfs:range rdf:resource="http://example.org/ontology#Country"/>
+    </owl:ObjectProperty>
+
+    <!-- Class Hierarchy and Axioms -->
+    <owl:Class rdf:about="http://example.org/ontology#PlantPart">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/ontology#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/ontology#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="http://example.org/ontology#Plant"/>
+    </owl:Class>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Lion">
+        <rdf:type rdf:resource="http://example.org/ontology#Carnivore"/>
+        <rdf:type rdf:resource="http://example.org/ontology#Animal"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Zebra">
+        <rdf:type rdf:resource="http://example.org/ontology#Herbivore"/>
+        <rdf:type rdf:resource="http://example.org/ontology#Animal"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Savannah">
+        <rdf:type rdf:resource="http://example.org/ontology#Habitat"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Bear">
+        <rdf:type rdf:resource="http://example.org/ontology#CarnivoreThatEatsPlants"/>
+        <rdf:type rdf:resource="http://example.org/ontology#Animal"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Fish">
+        <rdf:type rdf:resource="http://example.org/ontology#Animal"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/ontology#Berries">
+        <rdf:type rdf:resource="http://example.org/ontology#PlantPart"/>
+    </owl:NamedIndividual>
+
+    <!-- Property Assertions -->
+    <owl:ObjectPropertyAssertion>
+        <owl:ObjectProperty rdf:resource="http://example.org/ontology#livesIn"/>
+        <owl:sourceIndividual rdf:resource="http://example.org/ontology#Lion"/>
+        <owl:targetIndividual rdf:resource="http://example.org/ontology#Savannah"/>
+    </owl:ObjectPropertyAssertion>
+
+    <owl:ObjectPropertyAssertion>
+        <owl:ObjectProperty rdf:resource="http://example.org/ontology#livesIn"/>
+        <owl:sourceIndividual rdf:resource="http://example.org/ontology#Zebra"/>
+        <owl:targetIndividual rdf:resource="http://example.org/ontology#Savannah"/>
+    </owl:ObjectPropertyAssertion>
+
+    <owl:ObjectPropertyAssertion>
+        <owl:ObjectProperty rdf:resource="http://example.org/ontology#eats"/>
+        <owl:sourceIndividual rdf:resource="http://example.org/ontology#Bear"/>
+        <owl:targetIndividual rdf:resource="http://example.org/ontology#Fish"/>
+    </owl:ObjectPropertyAssertion>
+
+    <owl:ObjectPropertyAssertion>
+        <owl:ObjectProperty rdf:resource="http://example.org/ontology#eats"/>
+        <owl:sourceIndividual rdf:resource="http://example.org/ontology#Bear"/>
+        <owl:targetIndividual rdf:resource="http://example.org/ontology#Berries"/>
+    </owl:ObjectPropertyAssertion>
+
+</rdf:RDF>

@@ -1,0 +1,518 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/animaldiet.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/animaldiet.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/animaldiet.owl">
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="owl:Thing"/>
+
+    <owl:Class rdf:about="#Animal">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Plant">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlantPart">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="owl:Thing"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No individuals are defined in this ontology -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Herbivore"/>
+            <rdf:Description rdf:about="#Omnivore"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
+
+    <rdf:Description rdf:about="#Herbivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eatsPlantPart"/>
+                <owl:someValuesFrom rdf:resource="#PlantPart"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isHerbivore"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Omnivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:someValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eatsPlantPart"/>
+                <owl:someValuesFrom rdf:resource="#PlantPart"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional classes for the new competency questions -->
+
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Lion">
+        <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlantEatingAnimal">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#AnimalEatingPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#WaterDrinkingAnimal">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional object properties for the new competency questions -->
+
+    <owl:ObjectProperty rdf:about="#drinks">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#WaterArea"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional data properties for the new competency questions -->
+
+    <owl:DatatypeProperty rdf:about="#isCarnivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No additional individuals are defined for the new competency questions -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional axioms for the new competency questions -->
+
+    <rdf:Description rdf:about="#Lion">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:allValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isCarnivore"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#PlantEatingAnimal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:allValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#AnimalEatingPlant">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:allValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#WaterDrinkingAnimal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#drinks"/>
+                <owl:someValuesFrom rdf:resource="#WaterArea"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Animal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#drinks"/>
+                <owl:minCardinality rdf:datatype="xsd:nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Animal">
+        <owl:disjointWith rdf:resource="#AnimalEatingPlant"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Plant">
+        <owl:disjointWith rdf:resource="#WaterDrinkingAnimal"/>
+    </rdf:Description>
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional classes for the new competency questions -->
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Predator">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Prey">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional object properties for the new competency questions -->
+
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasPredator">
+        <rdfs:domain rdf:resource="#Prey"/>
+        <rdfs:range rdf:resource="#Predator"/>
+        <owl:inverseOf rdf:resource="#preysUpon"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No additional individuals are defined for the new competency questions -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional axioms for the new competency questions -->
+
+    <rdf:Description rdf:about="#Predator">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#preysUpon"/>
+                <owl:someValuesFrom rdf:resource="#Prey"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Prey">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPredator"/>
+                <owl:someValuesFrom rdf:resource="#Predator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional classes for the new competency questions -->
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#Species"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional object properties for the new competency questions -->
+
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#livesIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No additional individuals are defined for the new competency questions -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional axioms for the new competency questions -->
+
+    <rdf:Description rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isLocatedIn"/>
+                <owl:someValuesFrom rdf:resource="#Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#livesIn"/>
+                <owl:someValuesFrom rdf:resource="#Habitat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional classes for the new competency questions -->
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#CarnivorousHerbivore">
+        <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional object properties for the new competency questions -->
+
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#livesIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No additional individuals are defined for the new competency questions -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Additional axioms for the new competency questions -->
+
+    <rdf:Description rdf:about="#CarnivorousHerbivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:someValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Animal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#livesIn"/>
+                <owl:someValuesFrom rdf:resource="#Habitat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Animal">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#sharesHabitatWith"/>
+                <owl:someValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+
+</rdf:RDF>

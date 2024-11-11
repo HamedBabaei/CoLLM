@@ -1,0 +1,79 @@
+Prefix(:=<http://example.org/myontology#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+
+Ontology(<http://example.org/myontology>
+
+    Declaration(Class(:Animal))
+    Declaration(Class(:Plant))
+    Declaration(Class(:PlantPart))
+    Declaration(Class(:Herbivore))
+    Declaration(Class(:Carnivore))
+    Declaration(Class(:Omnivore))
+
+    Declaration(ObjectProperty(:eats))
+
+    # Class Hierarchies
+    SubClassOf(:PlantPart :Plant)
+    SubClassOf(:Herbivore :Animal)
+    SubClassOf(:Carnivore :Animal)
+    SubClassOf(:Omnivore :Animal)
+
+    # Herbivore Definition
+    EquivalentClasses(
+        :Herbivore
+        ObjectIntersectionOf(
+            :Animal
+            ObjectAllValuesFrom(:eats :PlantPart)
+        )
+    )
+
+    # Carnivore Definition
+    EquivalentClasses(
+        :Carnivore
+        ObjectIntersectionOf(
+            :Animal
+            ObjectAllValuesFrom(:eats :Animal)
+        )
+    )
+
+    # Omnivore Definition
+    EquivalentClasses(
+        :Omnivore
+        ObjectIntersectionOf(
+            :Animal
+            ObjectSomeValuesFrom(:eats :Animal)
+            ObjectSomeValuesFrom(:eats :PlantPart)
+        )
+    )
+
+    # Object Property Definitions
+    Declaration(ObjectProperty(:eats))
+    ObjectPropertyDomain(:eats :Animal)
+    ObjectPropertyRange(:eats ObjectUnionOf(:Animal :PlantPart))
+
+    # Individual Definitions
+    Declaration(NamedIndividual(:Lion))
+    ClassAssertion(:Carnivore :Lion)
+    ObjectPropertyAssertion(:eats :Lion :Zebra)
+
+    Declaration(NamedIndividual(:Zebra))
+    ClassAssertion(:Herbivore :Zebra)
+    ObjectPropertyAssertion(:eats :Zebra :Grass)
+
+    Declaration(NamedIndividual(:Bear))
+    ClassAssertion(:Omnivore :Bear)
+    ObjectPropertyAssertion(:eats :Bear :Fish)
+    ObjectPropertyAssertion(:eats :Bear :Berries)
+
+    Declaration(NamedIndividual(:Grass))
+    ClassAssertion(:PlantPart :Grass)
+
+    Declaration(NamedIndividual(:Fish))
+    ClassAssertion(:Animal :Fish)
+
+    Declaration(NamedIndividual(:Berries))
+    ClassAssertion(:PlantPart :Berries)
+)

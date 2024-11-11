@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+    xmlns:aquaticresources="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#"
+    xmlns:climaticzone="http://www.ontologydesignpatterns.org/cp/owl/fsdas/climaticzone.owl#"
+    xmlns:collectionentity="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#"
+    xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+    xmlns:partof="http://www.ontologydesignpatterns.org/cp/owl/partof.owl#"
+    xmlns:species="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+    xml:base="http://example.org/ontology#"
+    xmlns="http://example.org/ontology#">
+
+
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    <rdfs:label xml:lang="en">Animal</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant">
+    <rdfs:subClassOf rdf:resource="collectionentity:Collection"/>
+    <rdfs:label xml:lang="en">Plant</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Herbivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Omnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">eats</rdfs:label>
+    <owl:inverseOf rdf:resource="#isEatenBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#isEatenBy">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">is eaten by</rdfs:label>
+    <owl:inverseOf rdf:resource="#eats"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#eatsPlantPart">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Plant"/>
+    <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+    <owl:inverseOf rdf:resource="#isEatenByAnimal"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#isEatenByAnimal">
+    <rdfs:domain rdf:resource="#Plant"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">is eaten by animal</rdfs:label>
+    <owl:inverseOf rdf:resource="#eatsPlantPart"/>
+  </owl:ObjectProperty>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#eats"/>
+    <owl:allValuesFrom rdf:resource="#Animal"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#eatsPlantPart"/>
+    <owl:allValuesFrom rdf:resource="#Plant"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#isEatenBy"/>
+    <owl:allValuesFrom rdf:resource="#Animal"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#isEatenByAnimal"/>
+    <owl:allValuesFrom rdf:resource="#Animal"/>
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Restriction>
+
+
+
+  <owl:Class rdf:about="#PlantEater">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">PlantEater</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#WaterDrinker">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">WaterDrinker</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#drinksWater">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Water"/>
+    <rdfs:label xml:lang="en">drinksWater</rdfs:label>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:about="#Water">
+    <rdfs:label xml:lang="en">Water</rdfs:label>
+  </owl:Class>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#drinksWater"/>
+    <owl:allValuesFrom rdf:resource="#Water"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Restriction>
+
+  <owl:Class rdf:about="#CarnivorousPlant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+    <rdfs:label xml:lang="en">CarnivorousPlant</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#eatsAnimal">
+    <rdfs:domain rdf:resource="#Plant"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">eatsAnimal</rdfs:label>
+  </owl:ObjectProperty>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#eatsAnimal"/>
+    <owl:someValuesFrom rdf:resource="#Animal"/>
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Restriction>
+
+
+
+  <owl:Class rdf:about="#Country">
+    <rdfs:subClassOf rdf:resource="collectionentity:Collection"/>
+    <rdfs:label xml:lang="en">Country</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#livesIn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Country"/>
+    <rdfs:label xml:lang="en">lives in</rdfs:label>
+    <owl:inverseOf rdf:resource="#hasAnimal"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasAnimal">
+    <rdfs:domain rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">has animal</rdfs:label>
+    <owl:inverseOf rdf:resource="#livesIn"/>
+  </owl:ObjectProperty>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#livesIn"/>
+    <owl:allValuesFrom rdf:resource="#Country"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#hasAnimal"/>
+    <owl:allValuesFrom rdf:resource="#Animal"/>
+    <rdfs:subClassOf rdf:resource="#Country"/>
+  </owl:Restriction>
+
+
+  <owl:Class rdf:about="#Habitat">
+    <rdfs:subClassOf rdf:resource="collectionentity:Collection"/>
+    <rdfs:label xml:lang="en">Habitat</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#livesInHabitat">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Habitat"/>
+    <rdfs:label xml:lang="en">lives in habitat</rdfs:label>
+    <owl:inverseOf rdf:resource="#hasAnimalInHabitat"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasAnimalInHabitat">
+    <rdfs:domain rdf:resource="#Habitat"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">has animal in habitat</rdfs:label>
+    <owl:inverseOf rdf:resource="#livesInHabitat"/>
+  </owl:ObjectProperty>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#livesInHabitat"/>
+    <owl:allValuesFrom rdf:resource="#Habitat"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#hasAnimalInHabitat"/>
+    <owl:allValuesFrom rdf:resource="#Animal"/>
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Restriction>
+
+  <owl:Class rdf:about="#EndangeredAnimal">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">Endangered Animal</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#isEndangeredIn">
+    <rdfs:domain rdf:resource="#EndangeredAnimal"/>
+    <rdfs:range rdf:resource="#Country"/>
+    <rdfs:label xml:lang="en">is endangered in</rdfs:label>
+    <owl:inverseOf rdf:resource="#hasEndangeredAnimal"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#hasEndangeredAnimal">
+    <rdfs:domain rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="#EndangeredAnimal"/>
+    <rdfs:label xml:lang="en">has endangered animal</rdfs:label>
+    <owl:inverseOf rdf:resource="#isEndangeredIn"/>
+  </owl:ObjectProperty>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#isEndangeredIn"/>
+    <owl:allValuesFrom rdf:resource="#Country"/>
+    <rdfs:subClassOf rdf:resource="#EndangeredAnimal"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <owl:onProperty rdf:resource="#hasEndangeredAnimal"/>
+    <owl:allValuesFrom rdf:resource="#EndangeredAnimal"/>
+    <rdfs:subClassOf rdf:resource="#Country"/>
+  </owl:Restriction>
+
+
+  <owl:Class rdf:about="#OmnivorePlantEater">
+    <rdfs:subClassOf rdf:resource="#Omnivore"/>
+    <rdfs:subClassOf rdf:resource="#PlantEater"/>
+    <rdfs:label xml:lang="en">Omnivore Plant Eater</rdfs:label>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="#livesInSameHabitatAs">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <rdfs:label xml:lang="en">lives in same habitat as</rdfs:label>
+    <owl:symmetric rdf:datatype="xsd:boolean">true</owl:symmetric>
+  </owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,412 @@
+
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/animals-and-plants#"
+     xml:base="http://www.semanticweb.org/ontologies/animals-and-plants"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants"/>
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#eats">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumes">
+        <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#eats"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumesPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#consumes"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed based on the competency questions -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No individuals needed based on the ontology design -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General Axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+        </owl:members>
+    </rdf:Description>
+
+
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Lion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+    </owl:Class>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#eats">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumes">
+        <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#eats"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumesPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#consumes"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#traps">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    
+    <owl:DataProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#drinksWater">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DataProperty>
+    
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Lion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Country"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Predator">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#eats">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumes">
+        <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#eats"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumesPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#consumes"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#traps">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isPredatorOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Predator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isLocatedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Country"/>
+    </owl:ObjectProperty>
+    
+    <owl:DataProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#drinksWater">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DataProperty>
+    
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Lion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Country"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Predator">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Habitat"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#eats">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumes">
+        <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#eats"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumesPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#consumes"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#traps">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isPredatorOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Predator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isLocatedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Country"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#hasHabitat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Habitat"/>
+    </owl:ObjectProperty>
+    
+    <owl:DataProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#drinksWater">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DataProperty>
+    <owl:DataProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isEndangered">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#EndangeredSpecies"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DataProperty>
+    
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Lion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Country"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Predator">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Habitat"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#FlexibleDietCarnivore">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#eats">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumes">
+        <owl:equivalentProperty rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#eats"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#consumesPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#consumes"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#traps">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isPredatorOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Predator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isLocatedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Country"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#hasHabitat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Habitat"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#sharesHabitatWith">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#occasionallyEats">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#eats"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#FlexibleDietCarnivore"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:DataProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#drinksWater">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#Animal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DataProperty>
+    <owl:DataProperty rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#isEndangered">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ontologies/animals-and-plants#EndangeredSpecies"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DataProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General Axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Herbivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Omnivore"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/ontologies/animals-and-plants#Carnivore"/>
+        </owl:members>
+    </rdf:Description>
+
+</rdf:RDF>

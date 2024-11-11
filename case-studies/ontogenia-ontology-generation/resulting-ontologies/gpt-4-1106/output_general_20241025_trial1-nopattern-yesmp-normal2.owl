@@ -1,0 +1,454 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontology#"
+     xml:base="http://www.semanticweb.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontology"/>
+
+    <!-- 
+    #################################################################
+    #    Classes
+    #################################################################
+     -->
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#PlantPart"/>
+
+    <!-- 
+    #################################################################
+    #    Object Properties
+    #################################################################
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    #################################################################
+    #    Data properties
+    #################################################################
+     -->
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    #################################################################
+    #    Restrictions
+    #################################################################
+     -->
+
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:allValuesFrom rdf:resource="#PlantPart"/>
+    </owl:Restriction>
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="#isHerbivore"/>
+        <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+    </owl:Restriction>
+
+    <!-- 
+    #################################################################
+    #    Equivalent and Disjoint Classes
+    #################################################################
+     -->
+
+    <owl:Class rdf:about="#Herbivore">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:allValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#Carnivore"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+        <owl:disjointWith rdf:resource="#Carnivore"/>
+    </owl:Class>
+
+ <!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontology#"
+     xml:base="http://www.semanticweb.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontology"/>
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#Lion">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#consumes">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Water"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#preysOn">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed based on the competency questions -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No individuals needed for the ontology definition -->
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Restrictions
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Herbivore">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:allValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:allValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="#ObligateCarnivore">
+        <rdfs:subClassOf rdf:resource="#Carnivore"/>
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+    </owl:Class>
+    <owl:Class rdf:about="#AnimalThatDoesNotDrinkWater">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#consumes"/>
+                <owl:hasValue rdf:resource="#Water"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Class Assertions
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ClassAssertion>
+        <owl:class rdf:resource="#ObligateCarnivore"/>
+        <owl:NamedIndividual rdf:about="#Lion"/>
+    </owl:ClassAssertion>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Equivalent and Disjoint Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Already defined above -->
+
+<!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontology/animals"
+     xml:base="http://www.semanticweb.org/ontology/animals"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontology/animals"/>
+    
+
+    #################################################################
+    #    Classes
+    #################################################################
+     -->
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Country"/>
+    
+    <!-- 
+    #################################################################
+    #    Object Properties
+    #################################################################
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#isPredatorOf">
+        <rdfs:subPropertyOf rdf:resource="#eats"/>
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#isFoundIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+    
+    <!-- 
+    #################################################################
+    #    Data Properties
+    #################################################################
+     -->
+
+    <!-- No data properties needed for the given competency questions -->
+
+    <!-- 
+    #################################################################
+    #    Restrictions
+    #################################################################
+     -->
+
+    <!-- No restrictions needed for the given competency questions -->
+
+    <!-- 
+    #################################################################
+    #    Individuals
+    #################################################################
+     -->
+
+    <!-- No individuals needed for the given competency questions -->
+
+ <!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontology#"
+     xml:base="http://www.semanticweb.org/ontology"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontology"/>
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Country"/>
+    <owl:Class rdf:about="#Habitat"/>
+    <owl:Class rdf:about="#Animal">
+        <rdfs:subClassOf rdf:resource="#EndangeredSpecies"/>
+    </owl:Class>
+    <owl:Class rdf:about="#EndangeredSpecies"/>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isHomeTo">
+        <rdfs:domain rdf:resource="#Country"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:DatatypeProperty rdf:about="#hasConservationStatus">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Restrictions
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:hasValue>"Endangered"</owl:hasValue>
+        <owl:allValuesFrom rdf:resource="#EndangeredSpecies"/>
+    </owl:Restriction>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No individuals in the ontology as per the instructions -->
+
+<!--
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/ontology/animals"
+     xml:base="http://www.example.org/ontology/animals"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     
+    <owl:Ontology rdf:about="http://www.example.org/ontology/animals"/>
+
+
+    Classes 
+    -->
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Carnivore"/>
+    <owl:Class rdf:about="#Herbivore"/>
+    <owl:Class rdf:about="#Omnivore"/>
+    <owl:Class rdf:about="#Habitat"/>
+    <owl:Class rdf:about="#Plant"/>
+
+    <!-- 
+    Object Properties 
+    -->
+    <owl:ObjectProperty rdf:about="#livesIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    Data Properties 
+    -->
+    <!-- No new data properties needed for the given competency questions -->
+
+    <!-- 
+    Individuals and Facts 
+    -->
+    <!-- No individuals needed for the given competency questions -->
+
+    <!-- 
+    Class Hierarchies and Disjointness 
+    -->
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+        <owl:disjointWith rdf:resource="#Carnivore"/>
+    </owl:Class>
+
+    <!-- 
+    Restrictions 
+    -->
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eats"/>
+                <owl:someValuesFrom rdf:resource="#Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <!-- 
+    Equivalent Classes 
+    -->
+    <!-- No equivalent classes needed for the given competency questions -->
+
+    <!-- 
+    Disjoint Classes 
+    -->
+    <!-- Disjointness already defined between Carnivore and Herbivore -->
+
+</rdf:RDF>

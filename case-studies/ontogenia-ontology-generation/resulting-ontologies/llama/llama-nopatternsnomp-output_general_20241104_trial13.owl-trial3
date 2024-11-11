@@ -1,0 +1,848 @@
+
+<?xml version="1.0"?>
+<owl:Ontology xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:animal="http://example.com/animal#"
+     xml:lang="en"
+     xml:base="http://example.com/animal">
+
+  <owl:Class rdf:ID="Animal"/>
+  <owl:Class rdf:ID="Plant"/>
+  <owl:Class rdf:ID="Herbivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Omnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Carnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlantPart">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="eatsPlantPart">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#PlantPart"/>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:ID="Leaf">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Fruit">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Root">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HerbivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:someValuesFrom rdf:resource="#PlantPart"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="OmnivorousDiet">
+    <owl:equivalentClass>
+      <owl:IntersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:someValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eatsPlantPart"/>
+          <owl:someValuesFrom rdf:resource="#PlantPart"/>
+        </owl:Restriction>
+      </owl:IntersectionOf>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CarnivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Animal"/>
+  <owl:Class rdf:ID="Plant"/>
+  <owl:Class rdf:ID="Herbivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Omnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Carnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlantPart">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CarnivorousPlant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="eatsPlantPart">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#PlantPart"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="drinks">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="http://example.com/liquid#Water"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="captures">
+    <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:ID="Leaf">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Fruit">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Root">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HerbivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:someValuesFrom rdf:resource="#PlantPart"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="OmnivorousDiet">
+    <owl:equivalentClass>
+      <owl:IntersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:someValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eatsPlantPart"/>
+          <owl:someValuesFrom rdf:resource="#PlantPart"/>
+        </owl:Restriction>
+      </owl:IntersectionOf>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CarnivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="NonDrinkingAnimal">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#drinks"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Lion">
+    <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="PitcherPlant">
+    <rdfs:subClassOf rdf:resource="#CarnivorousPlant"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#captures"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Animal"/>
+  <owl:Class rdf:ID="Plant"/>
+  <owl:Class rdf:ID="Herbivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Omnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Carnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlantPart">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CarnivorousPlant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Country">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="eatsPlantPart">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#PlantPart"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="drinks">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="http://example.com/liquid#Water"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="captures">
+    <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="preysOn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <owl:inverseOf rdf:resource="#isPreyOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isPreyOf">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="livesIn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Country"/>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:ID="Leaf">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Fruit">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Root">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HerbivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:someValuesFrom rdf:resource="#PlantPart"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="OmnivorousDiet">
+    <owl:equivalentClass>
+      <owl:IntersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:someValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eatsPlantPart"/>
+          <owl:someValuesFrom rdf:resource="#PlantPart"/>
+        </owl:Restriction>
+      </owl:IntersectionOf>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CarnivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="NonDrinkingAnimal">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#drinks"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Lion">
+    <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="PitcherPlant">
+    <rdfs:subClassOf rdf:resource="#CarnivorousPlant"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#captures"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Predator">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#preysOn"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Prey">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isPreyOf"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="EndemicSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#livesIn"/>
+        <owl:someValuesFrom rdf:resource="#Country"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Animal"/>
+  <owl:Class rdf:ID="Plant"/>
+  <owl:Class rdf:ID="Herbivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Omnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Carnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlantPart">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CarnivorousPlant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Country">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Habitat">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EndangeredSpecies">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="eatsPlantPart">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#PlantPart"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="drinks">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="http://example.com/liquid#Water"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="captures">
+    <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="preysOn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <owl:inverseOf rdf:resource="#isPreyOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isPreyOf">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="livesIn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Country"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inhabits">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Habitat"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasConservationStatus">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#iucn#ConservationStatus"/>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:ID="Leaf">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Fruit">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Root">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Desert">
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Rainforest">
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Grassland">
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Critical">
+    <rdfs:subClassOf rdf:resource="#iucn#ConservationStatus"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Endangered">
+    <rdfs:subClassOf rdf:resource="#iucn#ConservationStatus"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Vulnerable">
+    <rdfs:subClassOf rdf:resource="#iucn#ConservationStatus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HerbivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:someValuesFrom rdf:resource="#PlantPart"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="OmnivorousDiet">
+    <owl:equivalentClass>
+      <owl:IntersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:someValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eatsPlantPart"/>
+          <owl:someValuesFrom rdf:resource="#PlantPart"/>
+        </owl:Restriction>
+      </owl:IntersectionOf>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CarnivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="NonDrinkingAnimal">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#drinks"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Lion">
+    <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="PitcherPlant">
+    <rdfs:subClassOf rdf:resource="#CarnivorousPlant"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#captures"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Predator">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#preysOn"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Prey">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isPreyOf"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="EndemicSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#livesIn"/>
+        <owl:someValuesFrom rdf:resource="#Country"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="DesertDweller">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#inhabits"/>
+        <owl:someValuesFrom rdf:resource="#Desert"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="RainforestDweller">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#inhabits"/>
+        <owl:someValuesFrom rdf:resource="#Rainforest"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="GrasslandDweller">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#inhabits"/>
+        <owl:someValuesFrom rdf:resource="#Grassland"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CriticallyEndangeredSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:someValuesFrom rdf:resource="#Critical"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="EndangeredSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:someValuesFrom rdf:resource="#Endangered"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="VulnerableSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:someValuesFrom rdf:resource="#Vulnerable"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+
+
+  <owl:Class rdf:ID="Animal"/>
+  <owl:Class rdf:ID="Plant"/>
+  <owl:Class rdf:ID="Herbivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Omnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Carnivore">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlantPart">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CarnivorousPlant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Country">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Habitat">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EndangeredSpecies">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="eatsPlantPart">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#PlantPart"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="drinks">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="http://example.com/liquid#Water"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="captures">
+    <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="preysOn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <owl:inverseOf rdf:resource="#isPreyOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isPreyOf">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="livesIn">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Country"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inhabits">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Habitat"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasConservationStatus">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#iucn#ConservationStatus"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="cohabitsWith">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Animal"/>
+    <owl:symmetric rdf:resource="true"/>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:ID="Leaf">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Fruit">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Root">
+    <rdfs:subClassOf rdf:resource="#PlantPart"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Desert">
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Rainforest">
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Grassland">
+    <rdfs:subClassOf rdf:resource="#Habitat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Critical">
+    <rdfs:subClassOf rdf:resource="#iucn#ConservationStatus"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Endangered">
+    <rdfs:subClassOf rdf:resource="#iucn#ConservationStatus"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Vulnerable">
+    <rdfs:subClassOf rdf:resource="#iucn#ConservationStatus"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HerbivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:someValuesFrom rdf:resource="#PlantPart"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="OmnivorousDiet">
+    <owl:equivalentClass>
+      <owl:IntersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:someValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eatsPlantPart"/>
+          <owl:someValuesFrom rdf:resource="#PlantPart"/>
+        </owl:Restriction>
+      </owl:IntersectionOf>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CarnivorousDiet">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="NonDrinkingAnimal">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#drinks"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Lion">
+    <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="PitcherPlant">
+    <rdfs:subClassOf rdf:resource="#CarnivorousPlant"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#captures"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Predator">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#preysOn"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Prey">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isPreyOf"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="EndemicSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#livesIn"/>
+        <owl:someValuesFrom rdf:resource="#Country"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="DesertDweller">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#inhabits"/>
+        <owl:someValuesFrom rdf:resource="#Desert"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="RainforestDweller">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#inhabits"/>
+        <owl:someValuesFrom rdf:resource="#Rainforest"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="GrasslandDweller">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#inhabits"/>
+        <owl:someValuesFrom rdf:resource="#Grassland"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CriticallyEndangeredSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:someValuesFrom rdf:resource="#Critical"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="EndangeredSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:someValuesFrom rdf:resource="#Endangered"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="VulnerableSpecies">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasConservationStatus"/>
+        <owl:someValuesFrom rdf:resource="#Vulnerable"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Flexitarian">
+    <owl:equivalentClass>
+      <owl:IntersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:someValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eatsPlantPart"/>
+          <owl:someValuesFrom rdf:resource="#PlantPart"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#eats"/>
+          <owl:allValuesFrom rdf:resource="#Animal"/>
+        </owl:Restriction>
+      </owl:IntersectionOf>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:ID="HabitatCompanion">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#cohabitsWith"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+</owl:Ontology>

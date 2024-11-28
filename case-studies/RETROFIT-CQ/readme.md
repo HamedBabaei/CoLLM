@@ -14,10 +14,10 @@ The results of our experiments are summarized in the table below:
 
 ## How to Run the Experiments
 
-1. Run the experiment scripts in [experiment_scripts](path/to/experiment_scripts).
-2. The dataset for this case study is available in [dataset](path/to/dataset). 
+1. Run the experiment scripts in [experiment_scripts](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Implementation).
+2. The dataset for this case study is available in [dataset](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Data/Ontologies). 
 3. Add the model’s name (LLMs) and API key.
-4. Use the evaluation scripts provided in [evaluation_scripts](path/to/evaluation_scripts).
+4. Use the evaluation scripts provided in [evaluation_scripts](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Evaluation).
 
 
 ## Reference

@@ -6,11 +6,10 @@ This case study examines the application of the **REPRO** framework to **RETROFI
 
 The results of our experiments are summarized in the table below:
 
-![case-study-5-RQ1-results-tables](../../images/case-study-5-RQ1-results-tables.JPG)
-![case-study-5-RQ1-results-tables](../../images/case-study-5-RQ2-results-tables.JPG)
-![case-study-5-RQ1-results-tables](../../images/case-study-5-RQ2-results-tables1.JPG)
-![case-study-5-RQ1-results-tables](../../images/case-study-5-RQ3-results-tables.JPG)
-
+<img src="../../images/case-study-5-RQ1-results-tables.JPG" alt="case-study-5-RQ1-results-tables" width="800"/>
+<img src="../../images/case-study-5-RQ2-results-tables.JPG" alt="case-study-5-RQ2-results-tables" width="800"/>
+<img src="../../images/case-study-5-RQ2-results-tables1.JPG" alt="case-study-5-RQ2-results-tables1" width="800"/>
+<img src="../../images/case-study-5-RQ3-results-tables.JPG" alt="case-study-5-RQ3-results-tables" width="800"/>
 
 
 ## How to Run the Experiments

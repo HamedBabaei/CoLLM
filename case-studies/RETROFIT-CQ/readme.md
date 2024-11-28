@@ -18,7 +18,22 @@ The results of our experiments are summarized in the table below:
 4. Use the evaluation scripts provided in [evaluation_scripts](path/to/evaluation_scripts).
 
 
-## Citation
+## Reference
+```bibtex
+@inproceedings{10.1145/3605098.3636053,
+author = {Alharbi, Reham and Tamma, Valentina and Grasso, Floriana and Payne, Terry},
+title = {An Experiment in Retrofitting Competency Questions for Existing Ontologies},
+year = {2024},
+isbn = {9798400702433},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3605098.3636053},
+doi = {10.1145/3605098.3636053},
+booktitle = {Proceedings of the 39th ACM/SIGAPP Symposium on Applied Computing},
+pages = {1650–1658},
+numpages = {9},
+location = {Avila, Spain},
+series = {SAC '24}
+}
 
-If you use this work, please cite the following paper:
-
+```

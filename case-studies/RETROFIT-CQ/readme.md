@@ -1,6 +1,6 @@
 # Case Study 5 on RETROFIT-CQs -- Retrofitting CQs from Existing Ontologies Using LLMs
 
-This case study examines the application of the REPRO framework to RETROFIT CQs within the field of knowledge engineering. Specifically, it explores RETROFIT CQs, leveraging the capabilities of large language models (LLMs) to retrofit competency questions (CQs) from existing ontologies. This study is based on the work of researchers, titled *An Experiment in Retrofitting Competency Questions for Existing Ontologies*.
+This case study examines the application of the **REPRO** framework to RETROFIT CQs within the field of knowledge engineering. Specifically, it explores **RETROFIT CQs**, leveraging the capabilities of large language models (LLMs) to retrofit competency questions (CQs) from existing ontologies. This study is based on the work of researchers, titled **An Experiment in Retrofitting Competency Questions for Existing Ontologies**.
 
 ## Results Table
 

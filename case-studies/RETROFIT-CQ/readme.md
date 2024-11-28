@@ -6,9 +6,9 @@ This case study examines the application of the **REPRO** framework to **RETROFI
 
 The results of our experiments are summarized in the table below:
 
-![Results Table](assets/results_table.png)
+![Results Table](images/case-study-5-RQ1-results-tables.JPG)
 
-*(Ensure the `results_table.png` image is saved in the `assets` folder of your repository.)*
+
 
 ## How to Run the Experiments
 

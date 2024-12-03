@@ -31,9 +31,10 @@ The prompt is in [the main repository- CQbyCQ](https://github.com/LiUSemWeb/LLMs
 
 </p>
 
-## The detailed results of the experiment 
+## The detailed results of the experiment for each run
 
-<p align="center">
+<div align="center">
+  
 ![image](../../images/case-study-1-results.png)
 
-</p>
+</div>

@@ -1,3 +1,5 @@
+The main code and instructions for reproducing this case study are presented here: [LLMs4OntologyDev](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024)
+
 The outputs of the experiment are divided into three folders based on each research question (RQ).
 
 ## The core code behind the CQbyCQ method is 
@@ -22,6 +24,16 @@ def cqbycq(S,CQs,runNumber,story):
   f.write(Memory)
   f.close()
 ```
+The prompt is in [the main repository- CQbyCQ](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/blob/main/Prompts/CQbyCQ.md) 
+<p align="center">
+
 ![image](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/raw/main/Prompts/Images/cq.jpg)
+
+</p>
+
 ## The detailed results of the experiment 
-![image](https://github.com/user-attachments/assets/a1a24dbf-1a78-4771-b7ee-e41f6b996fe2)
+
+<p align="center">
+![image](../../images/case-study-1-results.png)
+
+</p>

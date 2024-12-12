@@ -26,10 +26,9 @@ def cqbycq(S,CQs,runNumber,story):
 ```
 The prompt is in [the main repository- CQbyCQ](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/blob/main/Prompts/CQbyCQ.md) 
 <p align="center">
-
-![image](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/raw/main/Prompts/Images/cq.jpg)
-
+    <img src="https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/raw/main/Prompts/Images/cq.jpg" alt="image" style="width: 50%;">
 </p>
+
 
 ## The detailed results of the experiment for each run
 ### Reproducibility of Case Study 1 

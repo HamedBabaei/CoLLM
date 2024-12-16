@@ -36,7 +36,7 @@ def design_ontology(prompt):
     )
 
     return response.choices[0].message.content.strip()
-
+```
 
 ## How to Run the Experiments for CoLLM?
 

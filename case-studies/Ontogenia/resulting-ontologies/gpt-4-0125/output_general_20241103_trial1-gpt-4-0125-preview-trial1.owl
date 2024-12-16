@@ -1,0 +1,176 @@
+
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xml:base="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#">
+    <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+        <cpannotationschema:coversRequirements>
+            What species feed upon a certain species?
+            What species are eaten by a certain species?
+            What species is preyed upon by a certain species?
+            What species preys upon a certain species?
+        </cpannotationschema:coversRequirements>
+        <cpannotationschema:hasIntent>
+            The pattern intends to model the situation that a certain species feed upon other species and that some species are preyed upon by a certain species.
+        </cpannotationschema:hasIntent>
+        <cpannotationschema:hasUnitTest>
+            SELECT ?x WHERE {?x a :AquaticSpecies.  ?x :feedsUpon :Shrimp. }
+            SELECT ?x WHERE {?x a :AquaticSpecies.  :Shrimp :isEatenBy ?x. }
+            SELECT ?x WHERE {?x a :AquaticSpecies.  ?x :isPreyedUponBy :Seals.}
+            SELECT ?x WHERE {?x a :AquaticSpecies.  :Seals :preysUpon ?x.}
+        </cpannotationschema:hasUnitTest>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl"/>
+        <cpannotationschema:scenarios>
+            What species eat 'shrimp'
+            What species are eaten by 'seals'
+        </cpannotationschema:scenarios>
+    </owl:Ontology>
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+                <owl:onProperty rdf:resource="#isPreyedUponBy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="#AquaticSpecies"/>
+                <owl:onProperty rdf:resource="#feedsUpon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Aquatic species</rdfs:label>
+        <rdfs:comment>
+            Aquatic species are conceptual entities that are characterized together with resources and water areas.
+            Mappable to fi:Species, fi:SpeciesRef, fi:SpeciesFeature, etc.
+            It has related axioms from FIGIS Schema that are included in the classes linked to the fi:Species class, such as fi:SpeciesRef (holding association with fi:AqResRef, which holds association with fi:WaterAreaRef).
+        </rdfs:comment>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#isFoodOf">
+        <owl:inverseOf rdf:resource="#feedsUpon"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is food of</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#feedsUpon">
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">feeds upon</rdfs:label>
+        <owl:inverseOf rdf:resource="#isFoodOf"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#isPreyedUponBy">
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is preyed upon by</rdfs:label>
+        <owl:inverseOf rdf:resource="#preysUpon"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#preysUpon">
+        <owl:inverseOf rdf:resource="#isPreyedUponBy"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">preys upon</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:Class rdf:about="#Lion">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Plant">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Animal">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    <owl:Class rdf:about="#PlantParts">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#feedsUpon">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#PlantParts"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#drinks">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Water"/>
+    </owl:ObjectProperty>
+    <owl:Class rdf:about="#Water">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#feedsUpon">
+        <rdfs:domain rdf:resource="#Plant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#occursIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+        <rdfs:label xml:lang="en">occurs in</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Habitat</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+        <rdfs:label xml:lang="en">Endangered Species</rdfs:label>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#occursIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+        <rdfs:label xml:lang="en">occurs in</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+        <rdfs:label xml:lang="en">has habitat</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#isEndangeredIn">
+        <rdfs:domain rdf:resource="#EndangeredSpecies"/>
+        <rdfs:range rdf:resource="#Country"/>
+        <rdfs:label xml:lang="en">is endangered in</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+        <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+        <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+        <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#eatsPlantParts">
+        <rdfs:domain rdf:resource="#Carnivore"/>
+        <rdfs:range rdf:resource="#PlantParts"/>
+        <rdfs:label xml:lang="en">eats plant parts</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+        <rdfs:label xml:lang="en">shares habitat with</rdfs:label>
+    </owl:ObjectProperty>
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Habitat</rdfs:label>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+        <rdfs:label xml:lang="en">has habitat</rdfs:label>
+    </owl:ObjectProperty>
+</rdf:RDF>

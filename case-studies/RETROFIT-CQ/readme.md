@@ -5,17 +5,17 @@ This case study examines the application of the **REPRO** framework to **RETROFI
 ## Results Table
 
 The results of our experiments are summarized in the table below:
-
+<div align="center">
 <img src="../../images/case-study-5-RQ1-results-tables.JPG" alt="case-study-5-RQ1-results-tables" width="800"/>
 <img src="../../images/case-study-5-RQ2-results-tables.JPG" alt="case-study-5-RQ2-results-tables" width="800"/>
 <img src="../../images/case-study-5-RQ2-results-tables1.JPG" alt="case-study-5-RQ2-results-tables1" width="800"/>
 <img src="../../images/case-study-5-RQ3-results-tables.JPG" alt="case-study-5-RQ3-results-tables" width="800"/>
-
+</div>
 
 ## How to Run the Experiments
 
 1. Run the experiment scripts in [experiment_scripts](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Implementation).
-2. The dataset for this case study is available in [dataset](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Data/Ontologies). 
+2. The dataset for this case study is available in [dataset](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Data/Ontologies).
 3. Add the model’s name (LLMs) and API key.
 4. Use the evaluation scripts provided in [evaluation_scripts](https://github.com/SemTech23/RETROFIT-CQs/tree/main/Evaluation).
 

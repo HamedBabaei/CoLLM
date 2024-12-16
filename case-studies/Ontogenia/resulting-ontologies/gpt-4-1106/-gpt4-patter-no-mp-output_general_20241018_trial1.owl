@@ -1,0 +1,484 @@
+
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/animaldiet.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/animaldiet.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/animaldiet.owl">
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="owl:Thing"/>
+
+    <owl:Class rdf:about="#Animal">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Plant">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlantPart">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isEatenBy">
+        <owl:inverseOf rdf:resource="#eats"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example Individuals for demonstration purposes -->
+
+    <Animal rdf:about="#Lion">
+        <isHerbivore rdf:datatype="xsd:boolean">false</isHerbivore>
+    </Animal>
+
+    <Animal rdf:about="#Zebra">
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+    </Animal>
+
+    <Animal rdf:about="#Gazelle">
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+    </Animal>
+
+    <PlantPart rdf:about="#Grass">
+        <!-- No additional properties needed for this example -->
+    </PlantPart>
+
+    <PlantPart rdf:about="#Leaves">
+        <!-- No additional properties needed for this example -->
+    </PlantPart>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Named Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="#Lion">
+        <eats rdf:resource="#Zebra"/>
+        <eats rdf:resource="#Gazelle"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Zebra">
+        <eatsPlantPart rdf:resource="#Grass"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Gazelle">
+        <eatsPlantPart rdf:resource="#Leaves"/>
+    </rdf:Description>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <!-- New classes based on the competency questions and ontology design patterns -->
+
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Water">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <!-- New object properties based on the competency questions and ontology design patterns -->
+
+    <owl:ObjectProperty rdf:about="#drinks">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Water"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isEatenByPlant">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#CarnivorousPlant"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing data properties from previous output are omitted -->
+
+    <!-- New data properties based on the competency questions and ontology design patterns -->
+
+    <owl:DatatypeProperty rdf:about="#needsWater">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example Individuals for demonstration purposes -->
+
+    <CarnivorousPlant rdf:about="#VenusFlytrap">
+        <!-- No additional properties needed for this example -->
+    </CarnivorousPlant>
+
+    <Water rdf:about="#FreshWater">
+        <!-- No additional properties needed for this example -->
+    </Water>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Named Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing named individuals from previous output are omitted -->
+
+    <!-- New named individuals based on the competency questions and ontology design patterns -->
+
+    <rdf:Description rdf:about="#Lion">
+        <eats rdf:resource="#Zebra"/>
+        <eats rdf:resource="#Gazelle"/>
+        <drinks rdf:resource="#FreshWater"/>
+        <needsWater rdf:datatype="xsd:boolean">true</needsWater>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#VenusFlytrap">
+        <isEatenByPlant rdf:resource="#Gazelle"/>
+    </rdf:Description>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <!-- New classes based on the competency questions and ontology design patterns -->
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <!-- New object properties based on the competency questions and ontology design patterns -->
+
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example Individuals for demonstration purposes -->
+
+    <Country rdf:about="#Kenya">
+        <!-- No additional properties needed for this example -->
+    </Country>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Named Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing named individuals from previous output are omitted -->
+
+    <!-- New named individuals based on the competency questions and ontology design patterns -->
+
+    <rdf:Description rdf:about="#Lion">
+        <isLocatedIn rdf:resource="#Kenya"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Zebra">
+        <isLocatedIn rdf:resource="#Kenya"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Gazelle">
+        <isLocatedIn rdf:resource="#Kenya"/>
+    </rdf:Description>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <!-- New classes based on the competency questions and ontology design patterns -->
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <!-- New object properties based on the competency questions and ontology design patterns -->
+
+    <owl:ObjectProperty rdf:about="#livesIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example Individuals for demonstration purposes -->
+
+    <Habitat rdf:about="#Savannah">
+        <!-- No additional properties needed for this example -->
+    </Habitat>
+
+    <Habitat rdf:about="#Rainforest">
+        <!-- No additional properties needed for this example -->
+    </Habitat>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Named Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing named individuals from previous output are omitted -->
+
+    <!-- New named individuals based on the competency questions and ontology design patterns -->
+
+    <rdf:Description rdf:about="#Lion">
+        <livesIn rdf:resource="#Savannah"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Zebra">
+        <livesIn rdf:resource="#Savannah"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Gazelle">
+        <livesIn rdf:resource="#Savannah"/>
+    </rdf:Description>
+
+    <EndangeredSpecies rdf:about="#BlackRhino">
+        <livesIn rdf:resource="#Savannah"/>
+    </EndangeredSpecies>
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <!-- New classes based on the competency questions and ontology design patterns -->
+
+    <owl:Class rdf:about="#OmnivorousAnimal">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#CarnivorousAnimal">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#HerbivorousAnimal">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <!-- New object properties based on the competency questions and ontology design patterns -->
+
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsCarnivore">
+        <rdfs:domain rdf:resource="#OmnivorousAnimal"/>
+        <rdfs:range rdf:resource="#CarnivorousAnimal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsHerbivore">
+        <rdfs:domain rdf:resource="#OmnivorousAnimal"/>
+        <rdfs:range rdf:resource="#HerbivorousAnimal"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example Individuals for demonstration purposes -->
+
+    <OmnivorousAnimal rdf:about="#Bear">
+        <!-- No additional properties needed for this example -->
+    </OmnivorousAnimal>
+
+    <CarnivorousAnimal rdf:about="#Wolf">
+        <!-- No additional properties needed for this example -->
+    </CarnivorousAnimal>
+
+    <HerbivorousAnimal rdf:about="#Deer">
+        <!-- No additional properties needed for this example -->
+    </HerbivorousAnimal>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Named Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing named individuals from previous output are omitted -->
+
+    <!-- New named individuals based on the competency questions and ontology design patterns -->
+
+    <rdf:Description rdf:about="#Bear">
+        <eatsCarnivore rdf:resource="#Wolf"/>
+        <eatsHerbivore rdf:resource="#Deer"/>
+        <sharesHabitatWith rdf:resource="#Wolf"/>
+        <sharesHabitatWith rdf:resource="#Deer"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Wolf">
+        <sharesHabitatWith rdf:resource="#Bear"/>
+        <sharesHabitatWith rdf:resource="#Deer"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#Deer">
+        <sharesHabitatWith rdf:resource="#Bear"/>
+        <sharesHabitatWith rdf:resource="#Wolf"/>
+    </rdf:Description>
+
+</rdf:RDF>

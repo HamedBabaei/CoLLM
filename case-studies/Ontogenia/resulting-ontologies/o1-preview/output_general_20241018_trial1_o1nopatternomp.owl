@@ -1,0 +1,143 @@
+
+Prefix: : <http://example.org/ontology#>
+Ontology: <http://example.org/ontology>
+
+ObjectProperty: eats
+    Domain: Animal
+    Range: Animal or Plant or PlantPart
+
+ObjectProperty: hasPart
+    Domain: Plant
+    Range: PlantPart
+
+ObjectProperty: partOf
+    InverseOf: hasPart
+
+Class: Animal
+
+Class: Plant
+
+Class: PlantPart
+    SubClassOf: partOf some Plant
+
+Class: Herbivore
+    EquivalentTo:
+        Animal and
+        eats only (Plant or PlantPart)
+
+Class: Carnivore
+    EquivalentTo:
+        Animal and
+        eats only Animal
+
+Class: Omnivore
+    EquivalentTo:
+        Animal and
+        eats some Animal and
+        eats some (Plant or PlantPart)
+
+
+Declaration( Class( :Animal ) )
+Declaration( Class( :Plant ) )
+Declaration( Class( :PlantPart ) )
+Declaration( Class( :Water ) )
+Declaration( Class( :Lion ) )
+Declaration( Class( :CarnivorousPlant ) )
+Declaration( Class( :KangarooRat ) )
+
+Declaration( ObjectProperty( :eats ) )
+Declaration( ObjectProperty( :drinks ) )
+
+SubClassOf( :Lion :Animal )
+SubClassOf( :Lion ObjectSomeValuesFrom( :eats ObjectUnionOf( :Plant :PlantPart ) ) )
+
+SubClassOf( :PlantPart :Plant )
+
+SubClassOf( :CarnivorousPlant :Plant )
+SubClassOf( :CarnivorousPlant ObjectSomeValuesFrom( :eats :Animal ) )
+
+SubClassOf( :KangarooRat :Animal )
+SubClassOf( :KangarooRat ObjectComplementOf( ObjectSomeValuesFrom( :drinks :Water ) ) )
+
+)
+    Declaration(Class(:Animal))
+    Declaration(Class(:Carnivore))
+    Declaration(Class(:Herbivore))
+    Declaration(Class(:Omnivore))
+    Declaration(Class(:Habitat))
+    Declaration(Class(:Plant))
+
+    Declaration(ObjectProperty(:eats))
+    Declaration(ObjectProperty(:livesIn))
+
+    SubClassOf(:Carnivore :Animal)
+    SubClassOf(:Herbivore :Animal)
+    SubClassOf(:Omnivore :Animal)
+
+    Domain(:eats :Animal)
+    Range(:eats ObjectUnionOf(:Animal :Plant))
+
+    Domain(:livesIn :Animal)
+    Range(:livesIn :Habitat)
+
+    Declaration(NamedIndividual(:Lion))
+    ClassAssertion(:Carnivore :Lion)
+    ObjectPropertyAssertion(:livesIn :Lion :Savannah)
+    ObjectPropertyAssertion(:eats :Lion :Zebra)
+
+    Declaration(NamedIndividual(:Tiger))
+    ClassAssertion(:Carnivore :Tiger)
+    ObjectPropertyAssertion(:livesIn :Tiger :Forest)
+    ObjectPropertyAssertion(:eats :Tiger :Deer)
+
+    Declaration(NamedIndividual(:Wolf))
+    ClassAssertion(:Carnivore :Wolf)
+    ObjectPropertyAssertion(:livesIn :Wolf :Forest)
+    ObjectPropertyAssertion(:eats :Wolf :Deer)
+
+    Declaration(NamedIndividual(:Fox))
+    ClassAssertion(:Carnivore :Fox)
+    ObjectPropertyAssertion(:livesIn :Fox :Forest)
+    ObjectPropertyAssertion(:eats :Fox :Rabbit)
+    ObjectPropertyAssertion(:eats :Fox :Berries)
+
+    Declaration(NamedIndividual(:Bear))
+    ClassAssertion(:Omnivore :Bear)
+    ObjectPropertyAssertion(:livesIn :Bear :Forest)
+    ObjectPropertyAssertion(:eats :Bear :Fish)
+    ObjectPropertyAssertion(:eats :Bear :Berries)
+
+    Declaration(NamedIndividual(:Raccoon))
+    ClassAssertion(:Omnivore :Raccoon)
+    ObjectPropertyAssertion(:livesIn :Raccoon :Forest)
+    ObjectPropertyAssertion(:eats :Raccoon :Fish)
+    ObjectPropertyAssertion(:eats :Raccoon :Berries)
+    ObjectPropertyAssertion(:eats :Raccoon :Insects)
+
+    Declaration(NamedIndividual(:Berries))
+    ClassAssertion(:Plant :Berries)
+
+    Declaration(NamedIndividual(:Deer))
+    ClassAssertion(:Herbivore :Deer)
+    ObjectPropertyAssertion(:livesIn :Deer :Forest)
+    ObjectPropertyAssertion(:eats :Deer :Grass)
+
+    Declaration(NamedIndividual(:Grass))
+    ClassAssertion(:Plant :Grass)
+
+    Declaration(NamedIndividual(:Rabbit))
+    ClassAssertion(:Herbivore :Rabbit)
+    ObjectPropertyAssertion(:livesIn :Rabbit :Forest)
+    ObjectPropertyAssertion(:eats :Rabbit :Grass)
+
+    Declaration(NamedIndividual(:Zebra))
+    ClassAssertion(:Herbivore :Zebra)
+    ObjectPropertyAssertion(:livesIn :Zebra :Savannah)
+    ObjectPropertyAssertion(:eats :Zebra :Grass)
+
+    Declaration(NamedIndividual(:Savannah))
+    ClassAssertion(:Habitat :Savannah)
+
+    Declaration(NamedIndividual(:Forest))
+    ClassAssertion(:Habitat :Forest)
+)

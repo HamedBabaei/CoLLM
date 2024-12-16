@@ -1,0 +1,392 @@
+
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.semanticweb.org/ontologies/animaldiet.owl#"
+    xml:base="http://www.semanticweb.org/ontologies/animaldiet.owl"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+    xmlns:aquaticresources="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#"
+    xmlns:collectionentity="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl#"
+    xmlns:partof="http://www.ontologydesignpatterns.org/cp/owl/partof.owl#"
+    xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+    xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#">
+
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/animaldiet.owl">
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/partof.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"/>
+    </owl:Ontology>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="linnaeantaxonomy:Species">
+        <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlantPart">
+        <rdfs:subClassOf rdf:resource="collectionentity:Collection"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example individuals for testing the ontology -->
+    <linnaeantaxonomy:Species rdf:about="#Lion">
+        <rdf:type rdf:resource="#Carnivore"/>
+    </linnaeantaxonomy:Species>
+
+    <linnaeantaxonomy:Species rdf:about="#Zebra">
+        <rdf:type rdf:resource="#Herbivore"/>
+    </linnaeantaxonomy:Species>
+
+    <linnaeantaxonomy:Species rdf:about="#Bear">
+        <rdf:type rdf:resource="#Omnivore"/>
+    </linnaeantaxonomy:Species>
+
+    <PlantPart rdf:about="#Leaves"/>
+    <PlantPart rdf:about="#Fruits"/>
+    <PlantPart rdf:about="#Roots"/>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed for the competency questions -->
+
+
+
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/animaldiet.owl">
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/partof.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"/>
+    </owl:Ontology>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <owl:Class rdf:about="#Autotroph">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Heterotroph">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Animal">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Plant">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <owl:ObjectProperty rdf:about="#drinks">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isEatenBy">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example individuals for testing the ontology -->
+    <linnaeantaxonomy:Species rdf:about="#VenusFlytrap">
+        <rdf:type rdf:resource="#Autotroph"/>
+        <rdf:type rdf:resource="#Plant"/>
+        <isEatenBy rdf:resource="#Insect"/>
+    </linnaeantaxonomy:Species>
+
+    <linnaeantaxonomy:Species rdf:about="#Insect">
+        <rdf:type rdf:resource="#Animal"/>
+        <eats rdf:resource="#VenusFlytrap"/>
+    </linnaeantaxonomy:Species>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed for the competency questions -->
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasPredator">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+        <owl:inverseOf rdf:resource="specieseat:preyesUpon"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example individuals for testing the ontology -->
+    <Country rdf:about="#Kenya"/>
+    <Country rdf:about="#Canada"/>
+    <Country rdf:about="#Australia"/>
+
+    <linnaeantaxonomy:Species rdf:about="#Gazelle">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isLocatedIn rdf:resource="#Kenya"/>
+    </linnaeantaxonomy:Species>
+
+    <linnaeantaxonomy:Species rdf:about="#Kangaroo">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isLocatedIn rdf:resource="#Australia"/>
+    </linnaeantaxonomy:Species>
+
+    <linnaeantaxonomy:Species rdf:about="#PolarBear">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isLocatedIn rdf:resource="#Canada"/>
+        <hasPredator rdf:resource="#Human"/>
+    </linnaeantaxonomy:Species>
+
+    <linnaeantaxonomy:Species rdf:about="#Human">
+        <rdf:type rdf:resource="#Omnivore"/>
+    </linnaeantaxonomy:Species>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed for the competency questions -->
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example individuals for testing the ontology -->
+    <Habitat rdf:about="#Savannah"/>
+    <Habitat rdf:about="#Arctic"/>
+    <Habitat rdf:about="#Rainforest"/>
+
+    <EndangeredSpecies rdf:about="#GiantPanda">
+        <hasHabitat rdf:resource="#Rainforest"/>
+    </EndangeredSpecies>
+
+    <EndangeredSpecies rdf:about="#PolarBear">
+        <hasHabitat rdf:resource="#Arctic"/>
+    </EndangeredSpecies>
+
+    <EndangeredSpecies rdf:about="#AfricanElephant">
+        <hasHabitat rdf:resource="#Savannah"/>
+    </EndangeredSpecies>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed for the competency questions -->
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing classes from previous output are omitted -->
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Existing object properties from previous output are omitted -->
+
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example individuals for testing the ontology -->
+    <!-- No new individuals needed for the competency questions -->
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No new data properties needed for the competency questions -->
+
+</rdf:RDF>

@@ -1,5 +1,5 @@
-## Case Study 2 on Ontology Learning  -- `Large Language Models for Ontology Learning (LLMs4OL) Paradigm`
-This case study examines the application of the **REPRO** framework to existing ontology learning research within the field of knowledge engineering. Specifically, we explore the **LLMs4OL** paradigm, which assesses the capabilities of large language models (LLMs) for ontology learning through study of researchers titled **LLMs4OL: Large Language Models for Ontology Learning**.
+## Case Study 3 on Ontology Learning  -- `Large Language Models for Ontology Learning (LLMs4OL) Paradigm`
+This case study examines the application of the **CoLLM** framework to existing ontology learning research within the field of knowledge engineering. Specifically, we explore the **LLMs4OL** paradigm, which assesses the capabilities of large language models (LLMs) for ontology learning through study of researchers titled **LLMs4OL: Large Language Models for Ontology Learning**.
 
 ### Results Table
 The results of our experiments are summarized in the table below:

@@ -1,8 +1,8 @@
-The main code and instructions for reproducing this case study are presented here: [LLMs4OntologyDev](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024)
+# Case Study 1 on Ontology Development -- `Navigating Ontology Development with Large Language Models `
 
-The outputs of the experiment are divided into three folders based on each research question (RQ).
+The main code and instructions for reproducing this case study are presented here: [LLMs4OntologyDev](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024). The outputs of the experiment are divided into three folders based on each research question (RQ).
 
-## The core code behind the CQbyCQ method is 
+## The core code behind the CQbyCQ method is
 
 ```Python
 import time
@@ -24,25 +24,46 @@ def cqbycq(S,CQs,runNumber,story):
   f.write(Memory)
   f.close()
 ```
-The prompt is in [the main repository- CQbyCQ](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/blob/main/Prompts/CQbyCQ.md) 
+The prompt is in [the main repository- CQbyCQ](https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/blob/main/Prompts/CQbyCQ.md)
 <p align="center">
     <img src="https://github.com/LiUSemWeb/LLMs4OntologyDev-ESWC2024/raw/main/Prompts/Images/cq.jpg" alt="image" style="width: 50%;">
 </p>
 
 
 ## The detailed results of the experiment for each run
-### Reproducibility of Case Study 1 
+### Reproducibility of Case Study 1
 In Table [ref], under the row ``Reproducibility Test,'' the obtained results indicate a +2.37\% performance drift compared to the original work, leading to the same conclusion. Additionally, the standard deviation (STD) in the original work (10) was reported to be higher than in the replicated results.
 
-### Sensitivity of Case Study 1 
+### Sensitivity of Case Study 1
 By looking at the table there are 4 different versions of GPT-4  we can observe that updates to GPT-4 do not fail in the reproducibility of the case study. Also, there is no trend of increase or decrease for the score meaning the updates of GPT-4 have no predictable effect on the performance.
 
-### Generalizability of Case Study 1 
+### Generalizability of Case Study 1
 Although this case study is not dependent on GPT-4, a newer OpenAI model with enhanced reasoning capabilities, o1-preview did not achieve a better score than other models in this case study; instead, it obtained the minimum score and exhibited the highest standard deviation.
 
 
 <div align="center">
-  
+
 ![image](../../images/case-study-1-results.png)
 
 </div>
+
+## Reference
+
+
+```bibtex
+@inproceedings{10.1007/978-3-031-60626-7_8,
+    author = {Saeedizade, Mohammad Javad and Blomqvist, Eva},
+    title = {Navigating Ontology Development with&nbsp;Large Language Models},
+    year = {2024},
+    isbn = {978-3-031-60625-0},
+    publisher = {Springer-Verlag},
+    address = {Berlin, Heidelberg},
+    url = {https://doi.org/10.1007/978-3-031-60626-7_8},
+    doi = {10.1007/978-3-031-60626-7_8},
+    booktitle = {The Semantic Web: 21st International Conference, ESWC 2024, Hersonissos, Crete, Greece, May 26–30, 2024, Proceedings, Part I},
+    pages = {143–161},
+    numpages = {19},
+    keywords = {LLM, Ontology, Ontology Engineering},
+    location = {Hersonissos, Greece}
+}
+```

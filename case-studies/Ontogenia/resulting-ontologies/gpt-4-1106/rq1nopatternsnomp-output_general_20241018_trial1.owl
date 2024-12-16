@@ -1,0 +1,401 @@
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/animaldiet#"
+     xml:base="http://www.semanticweb.org/ontologies/animaldiet"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#PlantPart"/>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:subPropertyOf rdf:resource="#eatsPlantPart"/>
+        <rdfs:domain rdf:resource="#Omnivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- No individuals needed for the competency questions -->
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General Axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AllDifferent>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <!-- Instances of animals, plants, and plant parts would go here -->
+        </owl:distinctMembers>
+    </owl:AllDifferent>
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Class Axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Herbivore">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isHerbivore"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Carnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+        <owl:disjointWith rdf:resource="#Omnivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+    </owl:Class>
+
+
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:subPropertyOf rdf:resource="#eatsPlantPart"/>
+        <rdfs:domain rdf:resource="#Omnivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsAnimal">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="#drinksWater">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <owl:AllDifferent>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <!-- Instances of animals, plants, and plant parts would go here -->
+        </owl:distinctMembers>
+    </owl:AllDifferent>
+
+    <owl:Class rdf:about="#Herbivore">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isHerbivore"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Carnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+        <owl:disjointWith rdf:resource="#Omnivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Animal">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#drinksWater"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eatsAnimal"/>
+                <owl:someValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Country"/>
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:subPropertyOf rdf:resource="#eatsPlantPart"/>
+        <rdfs:domain rdf:resource="#Omnivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsAnimal">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#isPredatorOf">
+        <owl:inverseOf rdf:resource="#eats"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#isLocatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="#drinksWater">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <owl:AllDifferent>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <!-- Instances of animals, plants, plant parts, and countries would go here -->
+        </owl:distinctMembers>
+    </owl:AllDifferent>
+
+    <owl:Class rdf:about="#Herbivore">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isHerbivore"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Carnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+        <owl:disjointWith rdf:resource="#Omnivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <owl:disjointWith rdf:resource="#Herbivore"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Animal">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#drinksWater"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#eatsAnimal"/>
+                <owl:someValuesFrom rdf:resource="#Animal"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+
+    <owl:ObjectProperty rdf:about="#eats"/>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart"/>
+    <owl:ObjectProperty rdf:about="#eatsPlant"/>
+    <owl:ObjectProperty rdf:about="#eatsAnimal"/>
+    <owl:ObjectProperty rdf:about="#isPredatorOf"/>
+    <owl:ObjectProperty rdf:about="#isLocatedIn"/>
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore"/>
+    <owl:DatatypeProperty rdf:about="#drinksWater"/>
+    <owl:DatatypeProperty rdf:about="#isEndangered">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <owl:AllDifferent>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <!-- Instances of animals, plants, plant parts, countries, and habitats would go here -->
+        </owl:distinctMembers>
+    </owl:AllDifferent>
+
+    <owl:Class rdf:about="#Herbivore"/>
+    <owl:Class rdf:about="#Carnivore"/>
+    <owl:Class rdf:about="#Omnivore"/>
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#CarnivorousPlant"/>
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#isEndangered"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+
+
+
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#Herbivore"/>
+    <owl:Class rdf:about="#Carnivore"/>
+    <owl:Class rdf:about="#Omnivore"/>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#CarnivorousPlant"/>
+    <owl:Class rdf:about="#Country"/>
+    <owl:Class rdf:about="#Habitat"/>
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#FacultativeCarnivore">
+        <rdfs:subClassOf rdf:resource="#Carnivore"/>
+    </owl:Class>
+
+    <owl:ObjectProperty rdf:about="#eats"/>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart"/>
+    <owl:ObjectProperty rdf:about="#eatsPlant"/>
+    <owl:ObjectProperty rdf:about="#eatsAnimal"/>
+    <owl:ObjectProperty rdf:about="#isPredatorOf"/>
+    <owl:ObjectProperty rdf:about="#isLocatedIn"/>
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="#isHerbivore"/>
+    <owl:DatatypeProperty rdf:about="#drinksWater"/>
+    <owl:DatatypeProperty rdf:about="#isEndangered"/>
+
+    <owl:AllDifferent>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <!-- Instances of animals, plants, plant parts, countries, habitats, and facultative carnivores would go here -->
+        </owl:distinctMembers>
+    </owl:AllDifferent>
+
+    <owl:Class rdf:about="#Herbivore"/>
+    <owl:Class rdf:about="#Carnivore"/>
+    <owl:Class rdf:about="#Omnivore"/>
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#CarnivorousPlant"/>
+    <owl:Class rdf:about="#EndangeredSpecies"/>
+    <owl:Class rdf:about="#FacultativeCarnivore">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#eats"/>
+                        <owl:someValuesFrom rdf:resource="#Animal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#eatsPlantPart"/>
+                        <owl:someValuesFrom rdf:resource="#PlantPart"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
+</rdf:RDF>

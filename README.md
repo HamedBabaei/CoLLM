@@ -19,6 +19,18 @@ These tests empirically validate the consistency of the results in KE studies un
 - `case-studies`: you need to create your case-study-specific directory here (if it is not there already). Please organize your code to be executable via the same directory as a root.
 - `images`: directory contains any general images/diagrams related to the project. e.g. architecture diagram.
 
+## Research Works
+The case studies of this work are as follows:
+
+|   | Title                                                      |                         Directory                         |
+|:-:|:-----------------------------------------------------------|:---------------------------------------------------------:|
+| 1 | Navigating Ontology Development with Large Language Models | [OntologyDevelopement](case-studies/OntologyDevelopment/) |
+| 2 | Ontology generation with metacognitive prompting and LLMs  |           [Ontogenia](case-studies/Ontogenia/)            |
+|3 | LLMs4OL: Large Language Models for Ontology Learning       |              [LLMs4OL](case-studies/LLMs4OL)              |
+|4| LLMs4OM: Maching Ontologies with Large Language Models|              [LLMs4OM](case-studies/LLMs4OM)              |
+|5|  Retrofitting CQs from Existing Ontologies Using LLMs      |                     [RETROFIT-CQs](case-studies/RETROFIT-CQ)                      |
+
+
 ## Contributors Guidelines
 *Feel free to skip step 2 if it is inconvenient for you to use pre-commit, once you are done and request for merge, I will take care of fixing the pre-commit related issues -- it is not a big deal at the moment*
 

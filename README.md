@@ -8,7 +8,12 @@
 
 </div>
 
-**Consistency** is a critical concern in knowledge engineering (KE), particularly given the increasing reliance on Large Language Models (LLMs) in various tasks. This work introduces a framework to assess the Consistency of Large Language Models when used to support KE. This framework, CoLLM, is designed to assess whether a system or process produces consistent results in LLM-based KE tasks through three tests:
+**Consistency** is a critical concern in knowledge engineering (KE), particularly given the increasing reliance on Large Language Models (LLMs) in various tasks. This work introduces a framework to assess the Consistency of Large Language Models when used to support KE (as depicted the following figure).
+
+![CoLLM](images/conc_fig.jpg)
+
+The CoLLM, is designed to assess whether a system or process produces consistent results in LLM-based KE tasks through three tests:
+
 1. **Reproducibility Test**, which evaluates the extent of randomness in existing studies
 1. **Sensitivity Test**, which examines the effect of LLM updates on results.
 2. **Generalizability Test**, which explores the feasibility of using alternative LLMs to perform the same study.

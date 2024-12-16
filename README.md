@@ -30,36 +30,59 @@ The case studies of this work are as follows:
 |4| LLMs4OM: Maching Ontologies with Large Language Models|              [LLMs4OM](case-studies/LLMs4OM)              |
 |5|  Retrofitting CQs from Existing Ontologies Using LLMs      |                     [RETROFIT-CQs](case-studies/RETROFIT-CQ)                      |
 
+[//]: # ()
+[//]: # (## Contributors Guidelines)
 
-## Contributors Guidelines
-*Feel free to skip step 2 if it is inconvenient for you to use pre-commit, once you are done and request for merge, I will take care of fixing the pre-commit related issues -- it is not a big deal at the moment*
+[//]: # (*Feel free to skip step 2 if it is inconvenient for you to use pre-commit, once you are done and request for merge, I will take care of fixing the pre-commit related issues -- it is not a big deal at the moment*)
 
-1. Clone the repository to your local machine:
-```bash
- git clone git@github.com:XXX/CoLLM.git
- cd REPRO
-```
+[//]: # ()
+[//]: # (1. Clone the repository to your local machine:)
 
-2. Create a virtual environment with `python=3.9` (or any python distribution), activate it, install the required
-   dependencies and **install the pre-commit configuration:**
+[//]: # (```bash)
 
-```bash
-conda create -n my_env python=3.9
-conda activate my_env
-pip install -r requirements.txt
-pre-commit install
-```
+[//]: # ( git clone git@github.com:XXX/CoLLM.git)
 
-3. Create a branch and commit your changes:
-```bash
-git switch -c <name-your-branch>
-# do your changes
-git add .
-git commit -m "your commit msg"
-git push
-```
+[//]: # ( cd REPRO)
 
-4. Once you finished your work, please make a merge request to `main` for review. We will check for any minor issue that code may cause - such removal of secret keys, missing files and ...
+[//]: # (```)
+
+[//]: # ()
+[//]: # (2. Create a virtual environment with `python=3.9` &#40;or any python distribution&#41;, activate it, install the required)
+
+[//]: # (   dependencies and **install the pre-commit configuration:**)
+
+[//]: # ()
+[//]: # (```bash)
+
+[//]: # (conda create -n my_env python=3.9)
+
+[//]: # (conda activate my_env)
+
+[//]: # (pip install -r requirements.txt)
+
+[//]: # (pre-commit install)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (3. Create a branch and commit your changes:)
+
+[//]: # (```bash)
+
+[//]: # (git switch -c <name-your-branch>)
+
+[//]: # (# do your changes)
+
+[//]: # (git add .)
+
+[//]: # (git commit -m "your commit msg")
+
+[//]: # (git push)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (4. Once you finished your work, please make a merge request to `main` for review. We will check for any minor issue that code may cause - such removal of secret keys, missing files and ...)
 
 
 # License

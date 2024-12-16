@@ -1,0 +1,437 @@
+
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xml:base="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl">
+        <owl:versionInfo>1.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Aquatic Species</rdfs:label>
+        <rdfs:comment>A species that lives in water.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+        <rdfs:comment>An animal that eats primarily plants.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+        <rdfs:comment>An animal that eats both plants and other animals.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlantPart">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+        <rdfs:comment>A part of a plant that animals may eat.</rdfs:comment>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">eats</rdfs:label>
+        <rdfs:comment>An animal that consumes another animal.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+        <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+        <rdfs:comment>An animal that consumes parts of plants.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isEatenBy">
+        <owl:inverseOf rdf:resource="#eats"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is eaten by</rdfs:label>
+        <rdfs:comment>An animal that is consumed by another animal.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <!-- Example Individuals for demonstration -->
+
+    <AquaticSpecies rdf:about="#Shark">
+        <rdfs:label xml:lang="en">Shark</rdfs:label>
+    </AquaticSpecies>
+
+    <AquaticSpecies rdf:about="#Fish">
+        <rdfs:label xml:lang="en">Fish</rdfs:label>
+    </AquaticSpecies>
+
+    <Herbivore rdf:about="#SeaTurtle">
+        <rdfs:label xml:lang="en">Sea Turtle</rdfs:label>
+    </Herbivore>
+
+    <PlantPart rdf:about="#Seaweed">
+        <rdfs:label xml:lang="en">Seaweed</rdfs:label>
+    </PlantPart>
+
+    <Omnivore rdf:about="#Dolphin">
+        <rdfs:label xml:lang="en">Dolphin</rdfs:label>
+    </Omnivore>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="#eats">
+        <rdfs:comment>An object property linking predators to their prey.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#eatsPlantPart">
+        <rdfs:comment>An object property linking herbivores and omnivores to the plant parts they consume.</rdfs:comment>
+    </rdf:Description>
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#AquaticSpecies">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Aquatic Species</rdfs:label>
+        <rdfs:comment>A species that lives in water.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+        <rdfs:comment>An animal that eats primarily plants.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+        <rdfs:comment>An animal that eats both plants and other animals.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlantPart">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+        <rdfs:comment>A part of a plant that animals may eat.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+        <rdfs:comment>An animal that primarily eats other animals.</rdfs:comment>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">eats</rdfs:label>
+        <rdfs:comment>An animal that consumes another animal.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+        <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+        <rdfs:comment>An animal that consumes parts of plants.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isEatenBy">
+        <owl:inverseOf rdf:resource="#eats"/>
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is eaten by</rdfs:label>
+        <rdfs:comment>An animal that is consumed by another animal.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <AquaticSpecies rdf:about="#Shark">
+        <rdfs:label xml:lang="en">Shark</rdfs:label>
+    </AquaticSpecies>
+
+    <AquaticSpecies rdf:about="#Fish">
+        <rdfs:label xml:lang="en">Fish</rdfs:label>
+    </AquaticSpecies>
+
+    <Herbivore rdf:about="#SeaTurtle">
+        <rdfs:label xml:lang="en">Sea Turtle</rdfs:label>
+    </Herbivore>
+
+    <PlantPart rdf:about="#Seaweed">
+        <rdfs:label xml:lang="en">Seaweed</rdfs:label>
+    </PlantPart>
+
+    <Omnivore rdf:about="#Dolphin">
+        <rdfs:label xml:lang="en">Dolphin</rdfs:label>
+    </Omnivore>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="#eats">
+        <rdfs:comment>An object property linking predators to their prey.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#eatsPlantPart">
+        <rdfs:comment>An object property linking herbivores and omnivores to the plant parts they consume.</rdfs:comment>
+    </rdf:Description>
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+        <rdfs:comment>A country where species can be found.</rdfs:comment>
+    </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:ObjectProperty rdf:about="#isFoundIn">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Country"/>
+        <rdfs:label xml:lang="en">is found in</rdfs:label>
+        <rdfs:comment>Links a species to the country it is found in.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasPredator">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">has predator</rdfs:label>
+        <rdfs:comment>Links a species to its predator.</rdfs:comment>
+        <owl:inverseOf rdf:resource="#isPredatorOf"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isPredatorOf">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">is predator of</rdfs:label>
+        <rdfs:comment>Links a predator species to its prey.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <Country rdf:about="#Australia">
+        <rdfs:label xml:lang="en">Australia</rdfs:label>
+    </Country>
+
+    <Country rdf:about="#Brazil">
+        <rdfs:label xml:lang="en">Brazil</rdfs:label>
+    </Country>
+
+    <AquaticSpecies rdf:about="#GreatWhiteShark">
+        <rdfs:label xml:lang="en">Great White Shark</rdfs:label>
+        <isFoundIn rdf:resource="#Australia"/>
+        <isFoundIn rdf:resource="#Brazil"/>
+        <hasPredator rdf:resource="#Orca"/>
+    </AquaticSpecies>
+
+    <AquaticSpecies rdf:about="#Orca">
+        <rdfs:label xml:lang="en">Orca</rdfs:label>
+        <isPredatorOf rdf:resource="#GreatWhiteShark"/>
+    </AquaticSpecies>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="#isFoundIn">
+        <rdfs:comment>Links species to the countries they are found in.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#hasPredator">
+        <rdfs:comment>Indicates that a species has a predator.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#isPredatorOf">
+        <rdfs:comment>Indicates that a species is a predator of another species.</rdfs:comment>
+    </rdf:Description>
+
+
+
+    <!-- Classes -->
+
+    <owl:Class rdf:about="#Habitat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Habitat</rdfs:label>
+        <rdfs:comment>A natural environment where species live.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#AquaticSpecies"/>
+        <rdfs:label xml:lang="en">Endangered Species</rdfs:label>
+        <rdfs:comment>A species that is at risk of extinction.</rdfs:comment>
+    </owl:Class>
+
+    <!-- Object Properties -->
+
+    <owl:ObjectProperty rdf:about="#livesIn">
+        <rdfs:domain rdf:resource="#AquaticSpecies"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+        <rdfs:label xml:lang="en">lives in</rdfs:label>
+        <rdfs:comment>Links species to their natural habitats.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- Individuals -->
+
+    <Habitat rdf:about="#CoralReef">
+        <rdfs:label xml:lang="en">Coral Reef</rdfs:label>
+    </Habitat>
+
+    <Habitat rdf:about="#OpenOcean">
+        <rdfs:label xml:lang="en">Open Ocean</rdfs:label>
+    </Habitat>
+
+    <EndangeredSpecies rdf:about="#HawksbillTurtle">
+        <rdfs:label xml:lang="en">Hawksbill Turtle</rdfs:label>
+        <livesIn rdf:resource="#CoralReef"/>
+    </EndangeredSpecies>
+
+    <AquaticSpecies rdf:about="#BlueWhale">
+        <rdfs:label xml:lang="en">Blue Whale</rdfs:label>
+        <livesIn rdf:resource="#OpenOcean"/>
+    </AquaticSpecies>
+
+    <!-- Annotations -->
+
+    <rdf:Description rdf:about="#livesIn">
+        <rdfs:comment>Represents the habitat in which a species lives.</rdfs:comment>
+    </rdf:Description>
+
+
+
+    <!-- Classes -->
+
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+        <rdfs:label xml:lang="en">Carnivorous Plant</rdfs:label>
+        <rdfs:comment>A plant that eats primarily insects and sometimes small animals.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Insect">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">Insect</rdfs:label>
+        <rdfs:comment>An arthropod of the class Insecta, characterized by six legs, up to two pairs of wings, and a segmented body.</rdfs:comment>
+    </owl:Class>
+
+    <!-- Object Properties -->
+
+    <owl:ObjectProperty rdf:about="#eatsInsect">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Insect"/>
+        <rdfs:label xml:lang="en">eats insect</rdfs:label>
+        <rdfs:comment>A carnivorous plant that consumes insects.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#isEatenByCarnivorousPlant">
+        <owl:inverseOf rdf:resource="#eatsInsect"/>
+        <rdfs:domain rdf:resource="#Insect"/>
+        <rdfs:range rdf:resource="#CarnivorousPlant"/>
+        <rdfs:label xml:lang="en">is eaten by carnivorous plant</rdfs:label>
+        <rdfs:comment>An insect that is consumed by a carnivorous plant.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- Individuals -->
+
+    <CarnivorousPlant rdf:about="#VenusFlytrap">
+        <rdfs:label xml:lang="en">Venus Flytrap</rdfs:label>
+    </CarnivorousPlant>
+
+    <Insect rdf:about="#Fly">
+        <rdfs:label xml:lang="en">Fly</rdfs:label>
+    </Insect>
+
+    <Insect rdf:about="#Mosquito">
+        <rdfs:label xml:lang="en">Mosquito</rdfs:label>
+    </Insect>
+
+    <!-- Annotations -->
+
+    <rdf:Description rdf:about="#eatsInsect">
+        <rdfs:comment>Links carnivorous plants to the insects they consume.</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="#isEatenByCarnivorousPlant">
+        <rdfs:comment>Indicates that an insect is consumed by a carnivorous plant.</rdfs:comment>
+    </rdf:Description>
+
+</rdf:RDF>

@@ -1,0 +1,229 @@
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY agentrole "http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#" >
+    <!ENTITY aquaticresources "http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#" >
+    <!ENTITY specieseat "http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#" >
+    <!ENTITY linnaeantaxonomy "http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#" >
+]>
+
+<rdf:RDF xmlns="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xml:base="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:aquaticresources="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#">
+
+    <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl">
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl"/>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="agentrole:Herbivore">
+        <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:Omnivore">
+        <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:PlantPart">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="agentrole:eats">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="agentrole:Agent"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:eatsPlantPart">
+        <rdfs:domain rdf:resource="agentrole:Herbivore"/>
+        <rdfs:range rdf:resource="agentrole:PlantPart"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:eatsPlantPart">
+        <rdfs:domain rdf:resource="agentrole:Omnivore"/>
+        <rdfs:range rdf:resource="agentrole:PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="agentrole:isHerbivore">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="agentrole:Carnivore">
+        <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:Plant">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="agentrole:eats">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="agentrole:Agent"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:eatsPlant">
+        <rdfs:domain rdf:resource="agentrole:Herbivore"/>
+        <rdfs:range rdf:resource="agentrole:Plant"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:eatsPlant">
+        <rdfs:domain rdf:resource="agentrole:Omnivore"/>
+        <rdfs:range rdf:resource="agentrole:Plant"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:eatsAnimal">
+        <rdfs:domain rdf:resource="agentrole:Carnivore"/>
+        <rdfs:range rdf:resource="agentrole:Agent"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:eatsAnimal">
+        <rdfs:domain rdf:resource="agentrole:Omnivore"/>
+        <rdfs:range rdf:resource="agentrole:Agent"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="agentrole:isCarnivore">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="agentrole:isPlant">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- Additional Classes for new competency questions -->
+    <owl:Class rdf:about="agentrole:Animal">
+        <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="agentrole:Plant"/>
+    </owl:Class>
+
+    <!-- Object Properties for new competency questions -->
+    <owl:ObjectProperty rdf:about="agentrole:eatsAnimal">
+        <rdfs:domain rdf:resource="agentrole:CarnivorousPlant"/>
+        <rdfs:range rdf:resource="agentrole:Animal"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="agentrole:Predator">
+        <rdfs:subClassOf rdf:resource="agentrole:Agent"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="agentrole:isLocatedIn">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="agentrole:Country"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:hasPredator">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="agentrole:Predator"/>
+    </owl:ObjectProperty>
+
+    <!-- Additional Object Properties for new competency questions -->
+    <owl:ObjectProperty rdf:about="specieseat:preysOn">
+        <rdfs:domain rdf:resource="agentrole:Predator"/>
+        <rdfs:range rdf:resource="agentrole:Agent"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="agentrole:hasPresenceInCountry">
+        <rdfs:domain rdf:resource="agentrole:Agent"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="agentrole:Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="agentrole:EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="agentrole:isLocatedIn">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="agentrole:Country"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="agentrole:hasHabitat">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="agentrole:Habitat"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="agentrole:isEndangered">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="agentrole:Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="agentrole:sharesHabitatWith">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="specieseat:eatsPlants">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="owl:Thing"/>
+    </owl:ObjectProperty>
+
+    <!-- Additional Classes for new competency questions -->
+    <owl:Class rdf:about="agentrole:CarnivorousPlantEatingAnimal">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <!-- Object Properties for new competency questions -->
+    <owl:ObjectProperty rdf:about="specieseat:eatsCarnivorousPlants">
+        <rdfs:domain rdf:resource="agentrole:CarnivorousPlantEatingAnimal"/>
+        <rdfs:range rdf:resource="agentrole:Plant"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="agentrole:hasHabitat">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:DatatypeProperty>
+
+</rdf:RDF>

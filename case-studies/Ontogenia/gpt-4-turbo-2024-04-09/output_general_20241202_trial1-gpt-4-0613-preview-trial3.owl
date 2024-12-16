@@ -1,0 +1,246 @@
+
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY agentrole "http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#" >
+    <!ENTITY aquaticresources "http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#" >
+    <!ENTITY linnaeantaxonomy "http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#" >
+    <!ENTITY specieseat "http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#" >
+    <!ENTITY partof "http://www.ontologydesignpatterns.org/cp/owl/partof.owl#" >
+    <!ENTITY cpannotationschema "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#" >
+]>
+
+<rdf:RDF xmlns="http://www.ontologydesignpatterns.org/cp/owl/ontology.owl#"
+     xml:base="http://www.ontologydesignpatterns.org/cp/owl/ontology.owl"
+     xmlns:agentrole="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl#"
+     xmlns:aquaticresources="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl#"
+     xmlns:linnaeantaxonomy="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl#"
+     xmlns:specieseat="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl#"
+     xmlns:partof="http://www.ontologydesignpatterns.org/cp/owl/partof.owl#"
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/ontology.owl">
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/agentrole.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/aquaticresources.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/linnaeantaxonomy.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/fsdas/specieseat.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/partof.owl"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl"/>
+    </owl:Ontology>
+
+    <!-- Classes -->
+    <owl:Class rdf:about="linnaeantaxonomy:Herbivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:Omnivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:PlantPart">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="specieseat:eats">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="specieseat:eatsPlantPart">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Herbivore"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:PlantPart"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="specieseat:eatsPlantPart">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Omnivore"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- Restrictions -->
+    <owl:Class rdf:about="linnaeantaxonomy:Herbivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:eats"/>
+                <owl:allValuesFrom rdf:resource="linnaeantaxonomy:PlantPart"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:Omnivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:eats"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:PlantPart"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="linnaeantaxonomy:Carnivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:Plant">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Plant"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="specieseat:eatsAnimal">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Carnivore"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="specieseat:eatsAnimal">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:CarnivorousPlant"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <!-- Restrictions -->
+    <owl:Class rdf:about="linnaeantaxonomy:Carnivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:eats"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Species"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:CarnivorousPlant">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:eatsAnimal"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Species"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="linnaeantaxonomy:Predator">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:Prey">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="specieseat:preysOn">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Predator"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Prey"/>
+    </owl:ObjectProperty>
+
+    <!-- Restrictions -->
+    <owl:Class rdf:about="linnaeantaxonomy:Predator">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:preysOn"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Prey"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:Prey">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:preysOn"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Predator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="linnaeantaxonomy:EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="aquaticresources:Country">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="aquaticresources:Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="aquaticresources:isLocatedIn">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="aquaticresources:Country"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="aquaticresources:livesIn">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="aquaticresources:Habitat"/>
+    </owl:ObjectProperty>
+
+    <!-- Restrictions -->
+    <owl:Class rdf:about="linnaeantaxonomy:EndangeredSpecies">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:isEndangered"/>
+                <owl:hasValue rdf:datatype="xsd:boolean">true</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="linnaeantaxonomy:CarnivorousHerbivore">
+        <rdfs:subClassOf rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="aquaticresources:Habitat">
+        <rdfs:subClassOf rdf:resource="owl:Thing"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="specieseat:eatsPlants">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:CarnivorousHerbivore"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="aquaticresources:sharesHabitatWith">
+        <rdfs:domain rdf:resource="linnaeantaxonomy:Species"/>
+        <rdfs:range rdf:resource="linnaeantaxonomy:Species"/>
+    </owl:ObjectProperty>
+
+    <!-- Restrictions -->
+    <owl:Class rdf:about="linnaeantaxonomy:CarnivorousHerbivore">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:eats"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Species"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="specieseat:eatsPlants"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Species"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="linnaeantaxonomy:Species">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="aquaticresources:sharesHabitatWith"/>
+                <owl:someValuesFrom rdf:resource="linnaeantaxonomy:Species"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>

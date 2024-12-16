@@ -1,0 +1,491 @@
+
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/animals#"
+     xml:base="http://www.semanticweb.org/animals"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/animals"/>
+
+    <!-- 
+    Classes 
+    -->
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- 
+    Object Properties 
+    -->
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    Data Properties 
+    -->
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    Individuals 
+    -->
+    <owl:NamedIndividual rdf:about="#Lion">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">false</isHerbivore>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Deer">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+        <eatsPlantPart rdf:resource="#Leaves"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Bear">
+        <rdf:type rdf:resource="#Omnivore"/>
+        <eatsPlant rdf:resource="#Berries"/>
+        <eats rdf:resource="#Fish"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Leaves">
+        <rdf:type rdf:resource="#PlantPart"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Berries">
+        <rdf:type rdf:resource="#Plant"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Fish">
+        <rdf:type rdf:resource="#Animal"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- 
+    Classes 
+    -->
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+
+    <!-- 
+    Object Properties 
+    -->
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsAnimal">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#drinksWater">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:ObjectProperty>
+
+    <!-- 
+    Data Properties 
+    -->
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    Individuals 
+    -->
+    <owl:NamedIndividual rdf:about="#Lion">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">false</isHerbivore>
+        <drinksWater rdf:datatype="xsd:boolean">true</drinksWater>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Deer">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+        <eatsPlantPart rdf:resource="#Leaves"/>
+        <drinksWater rdf:datatype="xsd:boolean">true</drinksWater>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Bear">
+        <rdf:type rdf:resource="#Omnivore"/>
+        <eatsPlant rdf:resource="#Berries"/>
+        <eats rdf:resource="#Fish"/>
+        <drinksWater rdf:datatype="xsd:boolean">true</drinksWater>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Leaves">
+        <rdf:type rdf:resource="#PlantPart"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Berries">
+        <rdf:type rdf:resource="#Plant"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Fish">
+        <rdf:type rdf:resource="#Animal"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#VenusFlytrap">
+        <rdf:type rdf:resource="#CarnivorousPlant"/>
+        <eatsAnimal rdf:resource="#Insects"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Insects">
+        <rdf:type rdf:resource="#Animal"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Country"/>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsAnimal">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#locatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#hasPredator">
+        <rdfs:inverseOf rdf:resource="#eats"/>
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="#Lion">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">false</isHerbivore>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Deer">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+        <eatsPlantPart rdf:resource="#Leaves"/>
+        <locatedIn rdf:resource="#USA"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Bear">
+        <rdf:type rdf:resource="#Omnivore"/>
+        <eatsPlant rdf:resource="#Berries"/>
+        <eats rdf:resource="#Fish"/>
+        <locatedIn rdf:resource="#Canada"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Leaves">
+        <rdf:type rdf:resource="#PlantPart"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Berries">
+        <rdf:type rdf:resource="#Plant"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Fish">
+        <rdf:type rdf:resource="#Animal"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#VenusFlytrap">
+        <rdf:type rdf:resource="#CarnivorousPlant"/>
+        <eatsAnimal rdf:resource="#Insects"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Insects">
+        <rdf:type rdf:resource="#Animal"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#USA">
+        <rdf:type rdf:resource="#Country"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Canada">
+        <rdf:type rdf:resource="#Country"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Country"/>
+    <owl:Class rdf:about="#Habitat"/>
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsAnimal">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#locatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="#isEndangered">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="#Lion">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">false</isHerbivore>
+        <locatedIn rdf:resource="#Africa"/>
+        <hasHabitat rdf:resource="#Savannah"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Deer">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+        <eatsPlantPart rdf:resource="#Leaves"/>
+        <locatedIn rdf:resource="#USA"/>
+        <hasHabitat rdf:resource="#Forest"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Bear">
+        <rdf:type rdf:resource="#Omnivore"/>
+        <eatsPlant rdf:resource="#Berries"/>
+        <eats rdf:resource="#Fish"/>
+        <locatedIn rdf:resource="#Canada"/>
+        <hasHabitat rdf:resource="#Woodlands"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Tiger">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isEndangered rdf:datatype="xsd:boolean">true</isHerbivore>
+        <locatedIn rdf:resource="#Asia"/>
+        <hasHabitat rdf:resource="#Rainforest"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Leaves"/>
+    <owl:NamedIndividual rdf:about="#Berries"/>
+    <owl:NamedIndividual rdf:about="#Fish"/>
+    <owl:NamedIndividual rdf:about="#VenusFlytrap"/>
+    <owl:NamedIndividual rdf:about="#Insects"/>
+    <owl:NamedIndividual rdf:about="#USA"/>
+    <owl:NamedIndividual rdf:about="#Canada"/>
+    <owl:NamedIndividual rdf:about="#Africa"/>
+    <owl:NamedIndividual rdf:about="#Asia"/>
+    <owl:NamedIndividual rdf:about="#Savannah">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Forest">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Woodlands">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Rainforest">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+
+
+
+    <!-- Classes -->
+    <owl:Class rdf:about="#Animal"/>
+    <owl:Class rdf:about="#Plant"/>
+    <owl:Class rdf:about="#PlantPart"/>
+    <owl:Class rdf:about="#Herbivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Omnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Carnivore">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:about="#CarnivorousPlant">
+        <rdfs:subClassOf rdf:resource="#Plant"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Country"/>
+    <owl:Class rdf:about="#Habitat"/>
+    <owl:Class rdf:about="#EndangeredSpecies">
+        <rdfs:subClassOf rdf:resource="#Animal"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    <owl:ObjectProperty rdf:about="#eats">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlantPart">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsPlant">
+        <rdfs:domain rdf:resource="#Herbivore"/>
+        <rdfs:range rdf:resource="#Plant"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsAnimal">
+        <rdfs:domain rdf:resource="#CarnivorousPlant"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#locatedIn">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Country"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#hasHabitat">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Habitat"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#sharesHabitatWith">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="#Animal"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="#eatsSomePlants">
+        <rdfs:domain rdf:resource="#Carnivore"/>
+        <rdfs:range rdf:resource="#PlantPart"/>
+    </owl:ObjectProperty>
+
+    <!-- Data Properties -->
+    <owl:DatatypeProperty rdf:about="#isHerbivore">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="#isEndangered">
+        <rdfs:domain rdf:resource="#Animal"/>
+        <rdfs:range rdf:resource="xsd:boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- Individuals -->
+    <owl:NamedIndividual rdf:about="#Lion">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">false</isHerbivore>
+        <locatedIn rdf:resource="#Africa"/>
+        <hasHabitat rdf:resource="#Savannah"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Deer">
+        <rdf:type rdf:resource="#Herbivore"/>
+        <isHerbivore rdf:datatype="xsd:boolean">true</isHerbivore>
+        <eatsPlantPart rdf:resource="#Leaves"/>
+        <locatedIn rdf:resource="#USA"/>
+        <hasHabitat rdf:resource="#Forest"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Bear">
+        <rdf:type rdf:resource="#Omnivore"/>
+        <eatsPlant rdf:resource="#Berries"/>
+        <eats rdf:resource="#Fish"/>
+        <locatedIn rdf:resource="#Canada"/>
+        <hasHabitat rdf:resource="#Woodlands"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Tiger">
+        <rdf:type rdf:resource="#Carnivore"/>
+        <isEndangered rdf:datatype="xsd:boolean">true</isHerbivore>
+        <locatedIn rdf:resource="#Asia"/>
+        <hasHabitat rdf:resource="#Rainforest"/>
+        <eatsSomePlants rdf:resource="#Grass"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Leaves"/>
+    <owl:NamedIndividual rdf:about="#Berries"/>
+    <owl:NamedIndividual rdf:about="#Fish"/>
+    <owl:NamedIndividual rdf:about="#VenusFlytrap"/>
+    <owl:NamedIndividual rdf:about="#Insects"/>
+    <owl:NamedIndividual rdf:about="#USA"/>
+    <owl:NamedIndividual rdf:about="#Canada"/>
+    <owl:NamedIndividual rdf:about="#Africa"/>
+    <owl:NamedIndividual rdf:about="#Asia"/>
+    <owl:NamedIndividual rdf:about="#Savannah">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Forest">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Woodlands">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Rainforest">
+        <rdf:type rdf:resource="#Habitat"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Grass">
+        <rdf:type rdf:resource="#PlantPart"/>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

@@ -1,9 +1,9 @@
 <div align="center">
- <img src="images/logo.png" width="400" height="150" />
+ <img src="images/logo.png" width="60%" height="20%"  />
 
- 
- <H1>A Framework for Assessing LLM Consistency in Knowledge Engineering</H1>
-<!--  <H1>CoLLM: Consistency of Large Language Models in Knowledge Engineering</H1> -->
+
+[//]: # ( <H1>A Framework for Assessing LLM Consistency in Knowledge Engineering</H1>)
+[//]: # (<!--  <H1>CoLLM: Consistency of Large Language Models in Knowledge Engineering</H1> -->)
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)

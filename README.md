@@ -1,6 +1,9 @@
 <div align="center">
- <img src="images/logo.png"/>
- <H1>CoLLM: Consistency of Large Language Models in Knowledge Engineering</H1>
+ <img src="images/logo.png" width="400" height="150" />
+
+ 
+ <H1>A Framework for Assessing LLM Consistency in Knowledge Engineering</H1>
+<!--  <H1>CoLLM: Consistency of Large Language Models in Knowledge Engineering</H1> -->
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -8,15 +11,15 @@
 
 </div>
 
-**Consistency** is a critical concern in knowledge engineering (KE), particularly given the increasing reliance on Large Language Models (LLMs) in various tasks. This work introduces a framework to assess the Consistency of Large Language Models when used to support KE (as depicted the following figure).
+**Consistency** is a critical concern in knowledge engineering (KE), particularly given the increasing reliance on Large Language Models (LLMs) in various tasks. This work introduces a framework to assess the consistency of large language models when used to support KE (as depicted the following figure).
 
 ![CoLLM](images/conc_fig.jpg)
 
 The CoLLM, is designed to assess whether a system or process produces consistent results in LLM-based KE tasks through three tests:
 
-1. **Reproducibility Test**, which evaluates the extent of randomness in existing studies
-1. **Sensitivity Test**, which examines the effect of LLM updates on results.
-2. **Generalizability Test**, which explores the feasibility of using alternative LLMs to perform the same study.
+1. **LLM Reproducibility Test**: What is the extent of the stochasticity or non-determinism of the results of previous scientific studies?
+1. **LLM Update Impact Test**: To what extent do updates of LLMs affect the results of existing studies?
+2. **LLM Replacement Test**: To what extent does an alternative LLM achieve similar performance to those used in previous studies, or are certain studies dependent on a specific LLM?
 
 These tests empirically validate the consistency of the results in KE studies under varying conditions to ensure the reliability of the reported findings of research efforts. The framework is validated by means of extensive experimentation using five recent research papers to define the research work, and leveraging various LLMs and datasets.
 

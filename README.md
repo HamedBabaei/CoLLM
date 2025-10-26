@@ -23,9 +23,8 @@ The CoLLM, is designed to assess whether a system or process produces consistent
 
 These tests empirically validate the consistency of the results in KE studies under varying conditions to ensure the reliability of the reported findings of research efforts. The framework is validated by means of extensive experimentation using five recent research papers to define the research work, and leveraging various LLMs and datasets.
 
-## Directories
-- `case-studies`: you need to create your case-study-specific directory here (if it is not there already). Please organize your code to be executable via the same directory as a root.
-- `images`: directory contains any general images/diagrams related to the project. e.g. architecture diagram.
+## Original study details
+Each study has its own GitHub repo; here we simply run them. For details, we refer you to the original repo.
 
 ## Research Works
 The case studies of this work are as follows:
